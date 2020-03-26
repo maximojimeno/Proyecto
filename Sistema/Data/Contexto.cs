@@ -8,7 +8,7 @@ namespace Sistema.Data
 {
   public class Contexto : DbContext
     {
-        DbSet<Usuarios> Usuarios { get; set; }
+         public  DbSet<Usuarios> Usuarios { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

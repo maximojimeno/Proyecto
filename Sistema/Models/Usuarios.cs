@@ -21,7 +21,7 @@ namespace Sistema.Models
         [Required(ErrorMessage ="El Rol es requerido ej. 'Administrador, Vendedor, Operador'")]
         public string Role { get; set; }
 
-        Usuarios()
+        public Usuarios()
         {
             UsuarioId = 0;
             Nombres = string.Empty;
