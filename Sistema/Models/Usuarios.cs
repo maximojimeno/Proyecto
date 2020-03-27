@@ -7,7 +7,6 @@ namespace Sistema.Models
 {
    public class Usuarios
     {
-
         [Key]
         [Range(0,100)]
         public int UsuarioId { get; set; }
