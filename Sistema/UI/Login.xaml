@@ -46,8 +46,17 @@
                 
                 <StackPanel Orientation="Horizontal" Margin="0,15,0,0">
                     <materialDesign:PackIcon Kind="Account" Height="63" Width="33" VerticalAlignment="Bottom"/>
-                    <TextBox x:Name="userName" Text="{Binding UserName, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" Width="390" materialDesign:HintAssist.IsFloating="True" materialDesign:HintAssist.Hint="Nombre de Usuario"  FontSize="20" VerticalAlignment="Bottom"/>
-
+                    <TextBox x:Name="userName" Width="390" materialDesign:HintAssist.IsFloating="True" materialDesign:HintAssist.Hint="Nombre de Usuario"  FontSize="20" VerticalAlignment="Bottom">
+                        <TextBox.Text>
+                            <Binding Path="UserName" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay" ValidatesOnDataErrors="True">
+                                <Binding.ValidationRules>
+                                    <ExceptionValidationRule/>
+                                </Binding.ValidationRules>
+                            </Binding>
+                        </TextBox.Text>
+                        
+                    </TextBox>
+                    
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal" Margin="0,40,0,0">

@@ -21,6 +21,7 @@ namespace Sistema.UI
     public partial class Login : Window
     {
         Usuarios usuarios = new Usuarios();
+        Principal Principal = new Principal();
         public Login()
         {
             InitializeComponent();
@@ -34,7 +35,7 @@ namespace Sistema.UI
             if (paso)
             {
                 Close();
-                MessageBox.Show("Login!", "Login");
+                Principal.Show();
             }
             else
             {
