@@ -12,6 +12,7 @@ using System.Windows.Shapes;
 using Sistema.BLL;
 using Sistema.Models;
 
+
 namespace Sistema.UI
 {
     /// <summary>
@@ -19,29 +20,41 @@ namespace Sistema.UI
     /// </summary>
     public partial class Login : Window
     {
+        Usuarios usuarios = new Usuarios();
         public Login()
         {
             InitializeComponent();
-            Inicio();
+            this.DataContext = usuarios;
         }
-
 
         public void Inicio()
         {
-            Usuarios usuarios = new Usuarios();
-            //obtener datos de la interfaz
-            usuarios.UserName = "maximojimeno";
-            usuarios.Password = "1234";
-
-
+            
             bool paso = Auth.Validar(usuarios.UserName, usuarios.Password);
-            if(paso)
+            if (paso)
             {
-                
-            } else
-            {
-                MessageBox.Show("Error de autenticacion!", "Error!");
+                Close();
+                MessageBox.Show("Login!", "Login");
             }
+            else
+            {
+                MessageBox.Show("Error de Autenticacion!", "Error!");
+            }
+        }
+
+        private void DownBtn(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
+        }
+
+        private void CloseWinBtn(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        private void IniciarBtn(object sender, RoutedEventArgs e)
+        {
+            Inicio();
         }
     }
 }

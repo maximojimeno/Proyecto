@@ -19,7 +19,7 @@ namespace Sistema.BLL
             {
                 var ls = from l in db.Usuarios
                          where l.UserName == userName
-                         && l.Password == password
+                         && l.Password == GetSHA256(password)
                          select l;
                 if (ls.Count() > 0)
                 {
@@ -39,8 +39,6 @@ namespace Sistema.BLL
 
             return paso;
         }
-
-
 
         public static string GetSHA256(string str)
         {
