@@ -7,9 +7,9 @@ using System.Linq;
 
 namespace Sistema.BLL
 {
-   public class Auth
+    public class Auth
     {
-     
+
         public static bool Validar(string userName, string password)
         {
             bool paso = false;
@@ -35,7 +35,7 @@ namespace Sistema.BLL
             finally
             {
                 db.Dispose();
-            }        
+            }
 
             return paso;
         }
