@@ -29,7 +29,103 @@
         <Label Content="Nombres" Grid.Column="1" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="2" VerticalAlignment="Center"/>
         <Label Content="Apellidos" Grid.Column="1" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="3" VerticalAlignment="Center"/>
         <Label Content="Correo Electrónico" Grid.Column="1" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="4" VerticalAlignment="Center"/>
-        <Label Content="Cédula"/>
+        <Label Content="Cédula" Grid.Column="1" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="5" VerticalAlignment="Center"/>
+        <Label Content="Dirección" Grid.Column="1" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="6" VerticalAlignment="Center"/>
+        <Label Content="Teléfono" Grid.Column="1" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="7" VerticalAlignment="Center"/>
+
+        <TextBox x:Name="ClienteIdTextBox" Grid.Column="1" HorizontalAlignment="Left" Margin="121,10,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="120">
+            <TextBox.Text>
+                <Binding Path="ClienteId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                    <Binding.ValidationRules>
+                        <ExceptionValidationRule/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+
+        <TextBox x:Name="NombresTextBox" Grid.Column="1" HorizontalAlignment="Left" Margin="121,10,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Center" Width="120">
+            <TextBox.Text>
+                <Binding Path="Nombres" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                    <Binding.ValidationRules>
+                        <ExceptionValidationRule/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+
+        <TextBox x:Name="ApellidosTextBox" Grid.Column="1" HorizontalAlignment="Left" Margin="121,10,0,0" Grid.Row="3" TextWrapping="Wrap" VerticalAlignment="Top" Width="120">
+            <TextBox.Text>
+                <Binding Path="Apellidos" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                    <Binding.ValidationRules>
+                        <ExceptionValidationRule/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+
+        <TextBox x:Name="CorreoElectronicoTextBox" Grid.Column="1" HorizontalAlignment="Left" Margin="121,10,0,0" Grid.Row="4" TextWrapping="Wrap" VerticalAlignment="Center" Width="120">
+            <TextBox.Text>
+                <Binding Path="CorreoElectronico" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                    <Binding.ValidationRules>
+                        <ExceptionValidationRule/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+
+        <TextBox x:Name="CedulaTextBox" Grid.Column="1" HorizontalAlignment="Left" Margin="121,10,0,0" Grid.Row="5" TextWrapping="Wrap" VerticalAlignment="Center" Width="120">
+            <TextBox.Text>
+                <Binding Path="Cedula" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                    <Binding.ValidationRules>
+                        <ExceptionValidationRule/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+
+        <TextBox x:Name="DireccionTextBox" Grid.Column="1" HorizontalAlignment="Left" Margin="121,10,0,0" Grid.Row="6" TextWrapping="Wrap" VerticalAlignment="Center" Width="120">
+            <TextBox.Text>
+                <Binding Path="Descripcion" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                    <Binding.ValidationRules>
+                        <ExceptionValidationRule/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+
+        <TextBox x:Name="TelefonoTextBox" Grid.Column="1" HorizontalAlignment="Left" Margin="121,10,0,0" Grid.Row="7" TextWrapping="Wrap" VerticalAlignment="Center" Width="120">
+            <TextBox.Text>
+                <Binding Path="Telefono" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                    <Binding.ValidationRules>
+                        <ExceptionValidationRule/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+
+        <Button x:Name="NuevoButton" Content="Nuevo" Grid.Column="1" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="63,0,0,0" Grid.Row="8" VerticalAlignment="Center" Height="45" Width="96" FontWeight="Bold" Click="NuevoButton_Click">
+            <Button.Background>
+                <ImageBrush/>
+            </Button.Background>
+        </Button>
+
+        <Button x:Name="GuardarButton" Content="Guardar" Grid.Column="1" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="274,0,0,0" Grid.Row="8" VerticalAlignment="Center" Height="45" Width="101" FontWeight="Bold" Click="GuardarButton_Click">
+            <Button.Background>
+                <ImageBrush/>
+            </Button.Background>
+        </Button>
+
+        <Button x:Name="EliminarButton" Content="Eliminar" Grid.Column="1" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="462,0,0,0" Grid.Row="8" VerticalAlignment="Center" Height="45" Width="98" FontWeight="Bold" Click="EliminarButton_Click">
+            <Button.Background>
+                <ImageBrush/>
+            </Button.Background>
+        </Button>
+
+        <Button x:Name="BuscarButton" Content="Buscar" Grid.Column="1" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="261,12,0,0" Grid.Row="1" VerticalAlignment="Top" Width="88" FontWeight="Bold" Click="BuscarButton_Click">
+            <Button.Background>
+                <ImageBrush/>
+            </Button.Background>
+        </Button>
 
     </Grid>
 </Window>
