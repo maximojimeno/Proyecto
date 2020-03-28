@@ -7,6 +7,15 @@ namespace Sistema.Entidades
 {
     public partial class Pagos
     {
+        public Pagos()
+        {
+            PagoId = 0;
+            UsuarioId = 0;
+            ClienteId = 0;
+            Fecha = DateTime.Now;
+            TipoPago = string.Empty;
+            TotalPago = 0;
+        }
         [Key]
         public int PagoId { get; set; }
         public int UsuarioId { get; set; }

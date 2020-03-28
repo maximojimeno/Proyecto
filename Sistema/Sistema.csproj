@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <Folder Include="Entidades\" />
+    <Folder Include="UI\Consultas\" />
   </ItemGroup>
 
   <ItemGroup>
