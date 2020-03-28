@@ -18,6 +18,9 @@ namespace Sistema.Entidades
             Telefono = string.Empty;
             Celular = string.Empty;
             Direccion = string.Empty;
+            Cotizaciones = new List<Cotizaciones>();
+            Facturas = new List<Facturas>();
+            Pagos = new List<Pagos>();
 
         }
         [Key]

@@ -14,7 +14,7 @@ namespace Sistema.Entidades
             ClienteId = 0;
             NumeroFactura = 0;
             Fecha = DateTime.Now;
-            FechaVencimiento = DateTime.Now;
+            FechaVencimiento = Fecha.AddDays(30);
             Descuento = 0;
             ImpuestoTotal = 0;
             Total = 0;

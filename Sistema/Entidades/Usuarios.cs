@@ -15,6 +15,12 @@ namespace Sistema.Entidades
             Rol = string.Empty;
             UserName = string.Empty;
             Password = string.Empty;
+
+            Articulos = new List<Articulos>();
+            Clientes = new List<Clientes>();
+            Cotizaciones = new List<Cotizaciones>();
+            Facturas = new List<Facturas>();
+            Pagos = new List<Pagos>();
         }
         [Key]
         public int UsuarioId { get; set; }
