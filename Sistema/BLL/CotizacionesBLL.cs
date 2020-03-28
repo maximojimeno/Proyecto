@@ -9,7 +9,7 @@ using System.Text;
 
 namespace Sistema.BLL
 {
-    public class CotizacionesDetalle
+    public class CotizacionesBLL
     {
         public static bool Guardar(Cotizaciones cotizaciones)
         {
