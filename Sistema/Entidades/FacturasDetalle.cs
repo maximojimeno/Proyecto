@@ -1,16 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Sistema.Entidades
 {
-    public partial class Articulos
+    public partial class FacturasDetalle
     {
         [Key]
+        public int FacturasDetalleId { get; set; }
+        public int FacturaId { get; set; }
         public int ArticuloId { get; set; }
-        public int UsuarioId { get; set; }
-
 
         public string Codigo { get; set; }
         public string Descripcion { get; set; }
@@ -19,10 +18,7 @@ namespace Sistema.Entidades
         public decimal Precio { get; set; }
         public int Contidad { get; set; }
 
-        [ForeignKey("ArticuloId")]
-        public virtual List<FacturasDetalle> FacturasDetalles { get; set; }
-        [ForeignKey("ArticuloId")]
-        public virtual List<CotizacionesDetalle> CotizacionesDetalles { get; set; }
-        public virtual Usuarios Usuario { get; set; }
+        public virtual Articulos Articulo { get; set; }
+        public virtual Facturas Factura { get; set; }
     }
 }
