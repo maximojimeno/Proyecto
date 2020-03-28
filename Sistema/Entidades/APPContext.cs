@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace Sistema.Models
+namespace Sistema.Entidades
 {
     public partial class APPContext : DbContext
     {

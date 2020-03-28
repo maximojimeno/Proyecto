@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Sistema.Models
+namespace Sistema.Entidades
 {
     public partial class Cotizaciones
     {
