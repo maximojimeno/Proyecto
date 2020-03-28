@@ -15,6 +15,7 @@ namespace Sistema.Entidades
             Fecha = DateTime.Now;
             TipoPago = string.Empty;
             TotalPago = 0;
+            PagosDetalles = new List<PagosDetalle>();
         }
         [Key]
         public int PagoId { get; set; }

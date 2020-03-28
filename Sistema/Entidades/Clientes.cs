@@ -18,6 +18,7 @@ namespace Sistema.Entidades
             Telefono = string.Empty;
             Celular = string.Empty;
             Direccion = string.Empty;
+
         }
         [Key]
         public int ClienteId { get; set; }
