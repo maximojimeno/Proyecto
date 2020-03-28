@@ -5,6 +5,8 @@ using Sistema.Entidades;
 using Sistema.Data;
 using System.Security.Cryptography;
 using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
+using System.Linq;
 
 namespace Sistema.BLL
 {
@@ -65,6 +67,27 @@ namespace Sistema.BLL
             paso = db.SaveChanges() > 0;
 
             return paso;
+        }
+
+        public static List<Usuarios> GetList(Expression<Func<Usuarios, bool>> usuarios)
+        {
+            List<Usuarios> lista = new List<Usuarios>();
+            Contexto db = new Contexto();
+            try
+            {
+                lista = db.Usuarios.Where(usuarios).ToList();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                db.Dispose();
+            }
+
+            return lista;
         }
 
         private static string GetSHA256(string str)
