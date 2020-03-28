@@ -7,13 +7,21 @@ namespace Sistema.Entidades
 {
     public partial class Cotizaciones
     {
-
-       
+        public Cotizaciones()
+        {
+            CotizacionId = 0;
+            UsuarioId = 0;
+            ClienteId = 0;
+            Fecha = DateTime.Now;
+            NumeroCotizacion = 0;
+            Descuento = 0;
+            ImpuestoTotal = 0;
+            Total = 0;
+        }
         [Key]
         public int CotizacionId { get; set; }
         public int UsuarioId { get; set; }
         public int ClienteId { get; set; }
-
         public DateTime Fecha { get; set; }
         public int NumeroCotizacion { get; set; }
         public decimal? Descuento { get; set; }

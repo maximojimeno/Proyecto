@@ -9,15 +9,16 @@ using System.Text;
 
 namespace Sistema.BLL
 {
-    public class ClientesBLL
+    public class CotizacionesDetalle
     {
-        public static bool Guardar(Clientes clientes)
+        public static bool Guardar(Cotizaciones cotizaciones)
         {
             bool paso = false;
             Contexto db = new Contexto();
+
             try
             {
-                if (db.Clientes.Add(clientes) != null)
+                if (db.Cotizaciones.Add(cotizaciones) != null)
                     paso = db.SaveChanges() > 0;
             }catch(Exception)
             {
@@ -28,14 +29,20 @@ namespace Sistema.BLL
             }
             return paso;
         }
-
-        public static bool Modificar(Clientes clientes)
+        
+        public static bool Modificar(Cotizaciones cotizaciones)
         {
             bool paso = false;
             Contexto db = new Contexto();
+
             try
             {
-                db.Entry(clientes).State = EntityState.Modified;
+                db.Database.ExecuteSqlRaw($"DELETE FROM CotizacionesDetalle Where CotizacionId = {cotizaciones.CotizacionId}");
+                foreach(var item in cotizaciones.CotizacionesDetalles)
+                {
+                    db.Entry(item).State = EntityState.Added;
+                }
+                db.Entry(cotizaciones).State = EntityState.Modified;
                 paso = (db.SaveChanges() > 0);
             }catch(Exception)
             {
@@ -51,10 +58,12 @@ namespace Sistema.BLL
         {
             bool paso = false;
             Contexto db = new Contexto();
+
             try
             {
-                var eliminar = db.Clientes.Find(id);
+                var eliminar = db.Cotizaciones.Find(id);
                 db.Entry(eliminar).State = EntityState.Deleted;
+                
             }catch(Exception)
             {
                 throw;
@@ -64,14 +73,15 @@ namespace Sistema.BLL
             }
             return paso;
         }
-
-        public static Clientes Buscar(int id)
+        public static Cotizaciones Buscar(int id)
         {
             Contexto db = new Contexto();
-            Clientes clientes = new Clientes();
+            Cotizaciones cotizaciones = new Cotizaciones();
             try
             {
-                clientes = db.Clientes.Find(id);
+                cotizaciones = db.Cotizaciones.Include(x => x.CotizacionesDetalles).Where(t => t.CotizacionId == id).SingleOrDefault();
+
+                    
             }catch(Exception)
             {
                 throw;
@@ -79,17 +89,17 @@ namespace Sistema.BLL
             {
                 db.Dispose();
             }
-            return clientes;
+            return cotizaciones;
         }
 
-        public static List<Clientes> GetList(Expression<Func<Clientes, bool>>clientes)
+        public static List<Cotizaciones> GetList(Expression<Func<Cotizaciones, bool>> cotizaciones)
         {
             Contexto db = new Contexto();
-            List<Clientes> Lista = new List<Clientes>();
+            List<Cotizaciones> Lista = new List<Cotizaciones>();
 
             try
             {
-                Lista = db.Clientes.Where(clientes).ToList();
+                Lista = db.Cotizaciones.Where(cotizaciones).ToList();
             }catch(Exception)
             {
                 throw;
