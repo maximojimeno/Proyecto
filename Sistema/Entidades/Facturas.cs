@@ -14,7 +14,7 @@ namespace Sistema.Entidades
         public decimal? Descuento { get; set; }
         public double? ImpuestoTotal { get; set; }
         public decimal Total { get; set; }
-
+        public List<FacturasDetalle> facturasDetalles { get; set; }
         public virtual Clientes Cliente { get; set; }
         public virtual Usuarios Usuario { get; set; }
     }

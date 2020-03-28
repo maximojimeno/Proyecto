@@ -130,7 +130,7 @@ namespace Sistema.Data
             {
                 entity.HasKey(e => e.FacturaId)
                     .HasName("Facturas_pk");
-                    
+                   
 
                 entity.Property(e => e.Descuento).HasColumnType("decimal(18, 0)");
 

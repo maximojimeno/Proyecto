@@ -7,10 +7,13 @@ namespace Sistema.Entidades
     {
         public int CotizacionId { get; set; }
         public int ArticuloId { get; set; }
-        public int Cantidad { get; set; }
+        public string Codigo { get; set; }
+        public string Descripcion { get; set; }
+        public decimal Costo { get; set; }
         public double? Impuesto { get; set; }
         public decimal Precio { get; set; }
-
+        public int Contidad { get; set; }
+        public List<CotizacionesDetalle> cotizacionesDetalle { get; set; }
         public virtual Articulos Articulo { get; set; }
         public virtual Cotizaciones Cotizacion { get; set; }
     }
