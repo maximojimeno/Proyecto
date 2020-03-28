@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Sistema.Entidades
+namespace Sistema.Models
 {
     public partial class Usuarios
     {
@@ -12,13 +12,6 @@ namespace Sistema.Entidades
             Cotizaciones = new HashSet<Cotizaciones>();
             Facturas = new HashSet<Facturas>();
             Pagos = new HashSet<Pagos>();
-
-            UsuarioId = 0;
-            Nombres = string.Empty;
-            Apellidos = string.Empty;
-            Role = string.Empty;
-            UserName = string.Empty;
-            Password = string.Empty;
         }
 
         public int UsuarioId { get; set; }

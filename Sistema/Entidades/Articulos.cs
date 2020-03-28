@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Sistema.Entidades
+namespace Sistema.Models
 {
     public partial class Articulos
     {
