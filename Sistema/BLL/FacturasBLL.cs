@@ -38,8 +38,13 @@ namespace Sistema.BLL
 
             try
             {
-                db.Database.ExecuteSqlRaw($"DELETE FROM FacturasDetalle Where CotizacionId = {facturas.FacturaId}");
+                db.Database.ExecuteSqlRaw($"DELETE FROM FacturasDetalle Where FacturaId = {facturas.FacturaId}");
                 foreach (var item in facturas.FacturasDetalles)
+                {
+                    db.Entry(item).State = EntityState.Added;
+                }
+                db.Database.ExecuteSqlRaw($"DELETE FROM PagosDetalle Where FacturaId = {facturas.FacturaId}");
+                foreach (var item in facturas.PagosDetalles)
                 {
                     db.Entry(item).State = EntityState.Added;
                 }
@@ -87,6 +92,7 @@ namespace Sistema.BLL
             {
                 facturas = db.Facturas
                     .Include(f => f.FacturasDetalles)
+                    .Include(p => p.PagosDetalles)
                     .Where(d => d.FacturaId == id)
                     .SingleOrDefault();
             }
