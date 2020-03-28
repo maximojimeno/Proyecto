@@ -10,6 +10,15 @@ namespace Sistema.Entidades
             Cotizaciones = new HashSet<Cotizaciones>();
             Facturas = new HashSet<Facturas>();
             Pagos = new HashSet<Pagos>();
+
+            ClienteId = 0;
+            UsuarioId = 0;
+            Nombres = string.Empty;
+            Apellidos = string.Empty;
+            Cedula = 0;
+            Correo = string.Empty;
+            Telefono = 0;
+            Direccion = string.Empty;
         }
 
         public int ClienteId { get; set; }
