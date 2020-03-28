@@ -19,6 +19,8 @@ namespace Sistema.Entidades
             Cantidad = 0;
         }
         [Key]
+
+
         public int ArticuloId { get; set; }
         public int UsuarioId { get; set; }
         public string Codigo { get; set; }
