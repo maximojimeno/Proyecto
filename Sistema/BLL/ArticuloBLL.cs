@@ -9,15 +9,16 @@ using System.Text;
 
 namespace Sistema.BLL
 {
-    public class ClientesBLL
+    public class ArticuloBLL
     {
-        public static bool Guardar(Clientes clientes)
+        public static bool Guardar(Articulos articulos)
         {
             bool paso = false;
             Contexto db = new Contexto();
+
             try
             {
-                if (db.Clientes.Add(clientes) != null)
+                if (db.Articulos.Add(articulos) != null)
                     paso = db.SaveChanges() > 0;
             }catch(Exception)
             {
@@ -29,13 +30,14 @@ namespace Sistema.BLL
             return paso;
         }
 
-        public static bool Modificar(Clientes clientes)
+        public static bool Modificar(Articulos articulos)
         {
             bool paso = false;
             Contexto db = new Contexto();
+
             try
             {
-                db.Entry(clientes).State = EntityState.Modified;
+                db.Entry(articulos).State = EntityState.Modified;
                 paso = (db.SaveChanges() > 0);
             }catch(Exception)
             {
@@ -51,10 +53,12 @@ namespace Sistema.BLL
         {
             bool paso = false;
             Contexto db = new Contexto();
+
             try
             {
-                var eliminar = db.Clientes.Find(id);
+                var eliminar = db.Articulos.Find(id);
                 db.Entry(eliminar).State = EntityState.Deleted;
+                paso = (db.SaveChanges() > 0);
             }catch(Exception)
             {
                 throw;
@@ -65,13 +69,14 @@ namespace Sistema.BLL
             return paso;
         }
 
-        public static Clientes Buscar(int id)
+        public static Articulos Buscar(int id)
         {
             Contexto db = new Contexto();
-            Clientes clientes = new Clientes();
+            Articulos articulos = new Articulos();
+
             try
             {
-                clientes = db.Clientes.Find(id);
+                articulos = db.Articulos.Find(id);
             }catch(Exception)
             {
                 throw;
@@ -79,17 +84,16 @@ namespace Sistema.BLL
             {
                 db.Dispose();
             }
-            return clientes;
+            return articulos;
         }
 
-        public static List<Clientes> GetList(Expression<Func<Clientes, bool>>clientes)
+        public static List<Articulos> GetList(Expression<Func<Articulos, bool>> articulos)
         {
+            List<Articulos> Lista = new List<Articulos>();
             Contexto db = new Contexto();
-            List<Clientes> Lista = new List<Clientes>();
-
             try
             {
-                Lista = db.Clientes.Where(clientes).ToList();
+                Lista = db.Articulos.Where(articulos).ToList();
             }catch(Exception)
             {
                 throw;
