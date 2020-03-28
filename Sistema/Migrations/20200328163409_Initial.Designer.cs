@@ -9,8 +9,8 @@ using Sistema.Data;
 namespace Sistema.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20200328070858_initial")]
-    partial class initial
+    [Migration("20200328163409_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -25,33 +25,27 @@ namespace Sistema.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Codigo")
-                        .HasColumnType("TEXT")
-                        .HasMaxLength(50)
-                        .IsUnicode(false);
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("Contidad")
                         .HasColumnType("INTEGER");
 
                     b.Property<decimal>("Costo")
-                        .HasColumnType("money");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Descripcion")
-                        .IsRequired()
-                        .HasColumnType("TEXT")
-                        .HasMaxLength(100)
-                        .IsUnicode(false);
+                        .HasColumnType("TEXT");
 
                     b.Property<double?>("Impuesto")
                         .HasColumnType("REAL");
 
                     b.Property<decimal>("Precio")
-                        .HasColumnType("money");
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("UsuarioId")
                         .HasColumnType("INTEGER");
 
-                    b.HasKey("ArticuloId")
-                        .HasName("Articulos_pk");
+                    b.HasKey("ArticuloId");
 
                     b.HasIndex("UsuarioId");
 
@@ -65,40 +59,30 @@ namespace Sistema.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Apellidos")
-                        .IsRequired()
-                        .HasColumnType("TEXT")
-                        .HasMaxLength(100)
-                        .IsUnicode(false);
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("Cedula")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("Celular")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("Celular")
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Correo")
-                        .HasColumnType("TEXT")
-                        .IsUnicode(false);
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Direccion")
-                        .IsRequired()
-                        .HasColumnType("TEXT")
-                        .IsUnicode(false);
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Nombres")
-                        .IsRequired()
-                        .HasColumnType("TEXT")
-                        .HasMaxLength(100)
-                        .IsUnicode(false);
+                        .HasColumnType("TEXT");
 
-                    b.Property<int?>("Telefono")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("Telefono")
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("UsuarioId")
                         .HasColumnType("INTEGER");
 
-                    b.HasKey("ClienteId")
-                        .HasName("Clientes_pk");
+                    b.HasKey("ClienteId");
 
                     b.HasIndex("UsuarioId");
 
@@ -115,10 +99,10 @@ namespace Sistema.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<decimal?>("Descuento")
-                        .HasColumnType("decimal(18, 0)");
+                        .HasColumnType("TEXT");
 
-                    b.Property<DateTime?>("Fecha")
-                        .HasColumnType("date");
+                    b.Property<DateTime>("Fecha")
+                        .HasColumnType("TEXT");
 
                     b.Property<double?>("ImpuestoTotal")
                         .HasColumnType("REAL");
@@ -126,14 +110,13 @@ namespace Sistema.Migrations
                     b.Property<int>("NumeroCotizacion")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("Total")
+                    b.Property<int>("Total")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("UsuarioId")
                         .HasColumnType("INTEGER");
 
-                    b.HasKey("CotizacionId")
-                        .HasName("Cotizaciones_pk");
+                    b.HasKey("CotizacionId");
 
                     b.HasIndex("ClienteId");
 
@@ -144,6 +127,10 @@ namespace Sistema.Migrations
 
             modelBuilder.Entity("Sistema.Entidades.CotizacionesDetalle", b =>
                 {
+                    b.Property<int>("CotizaconesDetalleId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
                     b.Property<int>("ArticuloId")
                         .HasColumnType("INTEGER");
 
@@ -166,7 +153,9 @@ namespace Sistema.Migrations
                         .HasColumnType("REAL");
 
                     b.Property<decimal>("Precio")
-                        .HasColumnType("money");
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("CotizaconesDetalleId");
 
                     b.HasIndex("ArticuloId");
 
@@ -185,13 +174,13 @@ namespace Sistema.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<decimal?>("Descuento")
-                        .HasColumnType("decimal(18, 0)");
+                        .HasColumnType("TEXT");
 
-                    b.Property<DateTime?>("Fecha")
-                        .HasColumnType("date");
+                    b.Property<DateTime>("Fecha")
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime>("FechaVencimiento")
-                        .HasColumnType("date");
+                        .HasColumnType("TEXT");
 
                     b.Property<double?>("ImpuestoTotal")
                         .HasColumnType("REAL");
@@ -200,13 +189,12 @@ namespace Sistema.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<decimal>("Total")
-                        .HasColumnType("money");
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("UsuarioId")
                         .HasColumnType("INTEGER");
 
-                    b.HasKey("FacturaId")
-                        .HasName("Facturas_pk");
+                    b.HasKey("FacturaId");
 
                     b.HasIndex("ClienteId");
 
@@ -217,6 +205,10 @@ namespace Sistema.Migrations
 
             modelBuilder.Entity("Sistema.Entidades.FacturasDetalle", b =>
                 {
+                    b.Property<int>("FacturasDetalleId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
                     b.Property<int>("ArticuloId")
                         .HasColumnType("INTEGER");
 
@@ -241,6 +233,8 @@ namespace Sistema.Migrations
                     b.Property<decimal>("Precio")
                         .HasColumnType("TEXT");
 
+                    b.HasKey("FacturasDetalleId");
+
                     b.HasIndex("ArticuloId");
 
                     b.HasIndex("FacturaId");
@@ -258,18 +252,18 @@ namespace Sistema.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("Fecha")
-                        .HasColumnType("date");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("TipoPago")
-                        .HasColumnType("TEXT")
-                        .HasMaxLength(100)
-                        .IsUnicode(false);
+                        .HasColumnType("TEXT");
+
+                    b.Property<decimal>("TotalPago")
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("UsuarioId")
                         .HasColumnType("INTEGER");
 
-                    b.HasKey("PagoId")
-                        .HasName("Pagos_pk");
+                    b.HasKey("PagoId");
 
                     b.HasIndex("ClienteId");
 
@@ -280,14 +274,23 @@ namespace Sistema.Migrations
 
             modelBuilder.Entity("Sistema.Entidades.PagosDetalle", b =>
                 {
+                    b.Property<int>("PagosDetalleId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
                     b.Property<int>("FacturaId")
                         .HasColumnType("INTEGER");
 
                     b.Property<decimal>("Monto")
-                        .HasColumnType("money");
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("NumeroFactura")
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("PagoId")
                         .HasColumnType("INTEGER");
+
+                    b.HasKey("PagosDetalleId");
 
                     b.HasIndex("FacturaId");
 
@@ -303,37 +306,21 @@ namespace Sistema.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Apellidos")
-                        .IsRequired()
-                        .HasColumnType("TEXT")
-                        .HasMaxLength(100)
-                        .IsUnicode(false);
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Nombres")
-                        .IsRequired()
-                        .HasColumnType("TEXT")
-                        .HasMaxLength(100)
-                        .IsUnicode(false);
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("TEXT")
-                        .HasMaxLength(1)
-                        .IsUnicode(false);
+                        .HasColumnType("TEXT");
 
-                    b.Property<string>("Role")
-                        .IsRequired()
-                        .HasColumnType("TEXT")
-                        .HasMaxLength(50)
-                        .IsUnicode(false);
+                    b.Property<string>("Rol")
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("UserName")
-                        .IsRequired()
-                        .HasColumnType("TEXT")
-                        .HasMaxLength(50)
-                        .IsUnicode(false);
+                        .HasColumnType("TEXT");
 
-                    b.HasKey("UsuarioId")
-                        .HasName("Usuarios_pk");
+                    b.HasKey("UsuarioId");
 
                     b.ToTable("Usuarios");
                 });
@@ -343,7 +330,7 @@ namespace Sistema.Migrations
                     b.HasOne("Sistema.Entidades.Usuarios", "Usuario")
                         .WithMany("Articulos")
                         .HasForeignKey("UsuarioId")
-                        .HasConstraintName("Articulos___fk___Usuarios")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
@@ -352,7 +339,7 @@ namespace Sistema.Migrations
                     b.HasOne("Sistema.Entidades.Usuarios", "Usuario")
                         .WithMany("Clientes")
                         .HasForeignKey("UsuarioId")
-                        .HasConstraintName("Clientes___fk__Usuario")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
@@ -361,29 +348,28 @@ namespace Sistema.Migrations
                     b.HasOne("Sistema.Entidades.Clientes", "Cliente")
                         .WithMany("Cotizaciones")
                         .HasForeignKey("ClienteId")
-                        .HasConstraintName("Cotizaciones___fk___Clientes")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Sistema.Entidades.Usuarios", "Usuario")
                         .WithMany("Cotizaciones")
                         .HasForeignKey("UsuarioId")
-                        .HasConstraintName("Cotizaciones___fk___Usuarios")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
             modelBuilder.Entity("Sistema.Entidades.CotizacionesDetalle", b =>
                 {
                     b.HasOne("Sistema.Entidades.Articulos", "Articulo")
-                        .WithMany()
+                        .WithMany("CotizacionesDetalles")
                         .HasForeignKey("ArticuloId")
-                        .HasConstraintName("CotizacionDetalles___fk___Articulos")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Sistema.Entidades.Cotizaciones", "Cotizacion")
-                        .WithMany()
+                        .WithMany("CotizacionesDetalles")
                         .HasForeignKey("CotizacionId")
-                        .HasConstraintName("CotizacionDetalles___fk___Cotizaciones")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
@@ -392,29 +378,27 @@ namespace Sistema.Migrations
                     b.HasOne("Sistema.Entidades.Clientes", "Cliente")
                         .WithMany("Facturas")
                         .HasForeignKey("ClienteId")
-                        .HasConstraintName("Facturas___fk___Clientes")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Sistema.Entidades.Usuarios", "Usuario")
                         .WithMany("Facturas")
                         .HasForeignKey("UsuarioId")
-                        .HasConstraintName("Facturas___fk___Usuarios")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
             modelBuilder.Entity("Sistema.Entidades.FacturasDetalle", b =>
                 {
                     b.HasOne("Sistema.Entidades.Articulos", "Articulo")
-                        .WithMany()
+                        .WithMany("FacturasDetalles")
                         .HasForeignKey("ArticuloId")
-                        .HasConstraintName("FacturaDetalles___fk__Articulos")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Sistema.Entidades.Facturas", "Factura")
-                        .WithMany()
+                        .WithMany("FacturasDetalles")
                         .HasForeignKey("FacturaId")
-                        .HasConstraintName("FacturaDetalles___fk__Facturas")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -424,29 +408,27 @@ namespace Sistema.Migrations
                     b.HasOne("Sistema.Entidades.Clientes", "Cliente")
                         .WithMany("Pagos")
                         .HasForeignKey("ClienteId")
-                        .HasConstraintName("Pagos___fk___Clientes")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Sistema.Entidades.Usuarios", "Usuario")
                         .WithMany("Pagos")
                         .HasForeignKey("UsuarioId")
-                        .HasConstraintName("Pagos___fk___Usuarios")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
             modelBuilder.Entity("Sistema.Entidades.PagosDetalle", b =>
                 {
                     b.HasOne("Sistema.Entidades.Facturas", "Factura")
-                        .WithMany()
+                        .WithMany("PagosDetalles")
                         .HasForeignKey("FacturaId")
-                        .HasConstraintName("PagoDetalles___fk__Facturas")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Sistema.Entidades.Pagos", "Pago")
-                        .WithMany()
+                        .WithMany("PagosDetalles")
                         .HasForeignKey("PagoId")
-                        .HasConstraintName("PagoDetalles___fk__Pagos")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

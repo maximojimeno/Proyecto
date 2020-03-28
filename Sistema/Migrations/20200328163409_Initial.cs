@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Sistema.Migrations
 {
-    public partial class initial : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,15 +13,15 @@ namespace Sistema.Migrations
                 {
                     UsuarioId = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Nombres = table.Column<string>(unicode: false, maxLength: 100, nullable: false),
-                    Apellidos = table.Column<string>(unicode: false, maxLength: 100, nullable: false),
-                    Role = table.Column<string>(unicode: false, maxLength: 50, nullable: false),
-                    UserName = table.Column<string>(unicode: false, maxLength: 50, nullable: false),
-                    Password = table.Column<string>(unicode: false, maxLength: 1, nullable: false)
+                    Nombres = table.Column<string>(nullable: true),
+                    Apellidos = table.Column<string>(nullable: true),
+                    Rol = table.Column<string>(nullable: true),
+                    UserName = table.Column<string>(nullable: true),
+                    Password = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("Usuarios_pk", x => x.UsuarioId);
+                    table.PrimaryKey("PK_Usuarios", x => x.UsuarioId);
                 });
 
             migrationBuilder.CreateTable(
@@ -31,22 +31,22 @@ namespace Sistema.Migrations
                     ArticuloId = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     UsuarioId = table.Column<int>(nullable: false),
-                    Codigo = table.Column<string>(unicode: false, maxLength: 50, nullable: true),
-                    Descripcion = table.Column<string>(unicode: false, maxLength: 100, nullable: false),
-                    Costo = table.Column<decimal>(type: "money", nullable: false),
+                    Codigo = table.Column<string>(nullable: true),
+                    Descripcion = table.Column<string>(nullable: true),
+                    Costo = table.Column<decimal>(nullable: false),
                     Impuesto = table.Column<double>(nullable: true),
-                    Precio = table.Column<decimal>(type: "money", nullable: false),
+                    Precio = table.Column<decimal>(nullable: false),
                     Contidad = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("Articulos_pk", x => x.ArticuloId);
+                    table.PrimaryKey("PK_Articulos", x => x.ArticuloId);
                     table.ForeignKey(
-                        name: "Articulos___fk___Usuarios",
+                        name: "FK_Articulos_Usuarios_UsuarioId",
                         column: x => x.UsuarioId,
                         principalTable: "Usuarios",
                         principalColumn: "UsuarioId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -56,23 +56,23 @@ namespace Sistema.Migrations
                     ClienteId = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     UsuarioId = table.Column<int>(nullable: false),
-                    Nombres = table.Column<string>(unicode: false, maxLength: 100, nullable: false),
-                    Apellidos = table.Column<string>(unicode: false, maxLength: 100, nullable: false),
+                    Nombres = table.Column<string>(nullable: true),
+                    Apellidos = table.Column<string>(nullable: true),
                     Cedula = table.Column<int>(nullable: false),
-                    Correo = table.Column<string>(unicode: false, nullable: true),
-                    Telefono = table.Column<int>(nullable: true),
-                    Direccion = table.Column<string>(unicode: false, nullable: false),
-                    Celular = table.Column<int>(nullable: true)
+                    Correo = table.Column<string>(nullable: true),
+                    Telefono = table.Column<string>(nullable: true),
+                    Celular = table.Column<string>(nullable: true),
+                    Direccion = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("Clientes_pk", x => x.ClienteId);
+                    table.PrimaryKey("PK_Clientes", x => x.ClienteId);
                     table.ForeignKey(
-                        name: "Clientes___fk__Usuario",
+                        name: "FK_Clientes_Usuarios_UsuarioId",
                         column: x => x.UsuarioId,
                         principalTable: "Usuarios",
                         principalColumn: "UsuarioId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -83,27 +83,27 @@ namespace Sistema.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     UsuarioId = table.Column<int>(nullable: false),
                     ClienteId = table.Column<int>(nullable: false),
-                    Fecha = table.Column<DateTime>(type: "date", nullable: true),
+                    Fecha = table.Column<DateTime>(nullable: false),
                     NumeroCotizacion = table.Column<int>(nullable: false),
-                    Descuento = table.Column<decimal>(type: "decimal(18, 0)", nullable: true),
+                    Descuento = table.Column<decimal>(nullable: true),
                     ImpuestoTotal = table.Column<double>(nullable: true),
-                    Total = table.Column<int>(nullable: true)
+                    Total = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("Cotizaciones_pk", x => x.CotizacionId);
+                    table.PrimaryKey("PK_Cotizaciones", x => x.CotizacionId);
                     table.ForeignKey(
-                        name: "Cotizaciones___fk___Clientes",
+                        name: "FK_Cotizaciones_Clientes_ClienteId",
                         column: x => x.ClienteId,
                         principalTable: "Clientes",
                         principalColumn: "ClienteId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "Cotizaciones___fk___Usuarios",
+                        name: "FK_Cotizaciones_Usuarios_UsuarioId",
                         column: x => x.UsuarioId,
                         principalTable: "Usuarios",
                         principalColumn: "UsuarioId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -115,27 +115,27 @@ namespace Sistema.Migrations
                     UsuarioId = table.Column<int>(nullable: false),
                     ClienteId = table.Column<int>(nullable: false),
                     NumeroFactura = table.Column<int>(nullable: false),
-                    Fecha = table.Column<DateTime>(type: "date", nullable: true),
-                    FechaVencimiento = table.Column<DateTime>(type: "date", nullable: false),
-                    Descuento = table.Column<decimal>(type: "decimal(18, 0)", nullable: true),
+                    Fecha = table.Column<DateTime>(nullable: false),
+                    FechaVencimiento = table.Column<DateTime>(nullable: false),
+                    Descuento = table.Column<decimal>(nullable: true),
                     ImpuestoTotal = table.Column<double>(nullable: true),
-                    Total = table.Column<decimal>(type: "money", nullable: false)
+                    Total = table.Column<decimal>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("Facturas_pk", x => x.FacturaId);
+                    table.PrimaryKey("PK_Facturas", x => x.FacturaId);
                     table.ForeignKey(
-                        name: "Facturas___fk___Clientes",
+                        name: "FK_Facturas_Clientes_ClienteId",
                         column: x => x.ClienteId,
                         principalTable: "Clientes",
                         principalColumn: "ClienteId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "Facturas___fk___Usuarios",
+                        name: "FK_Facturas_Usuarios_UsuarioId",
                         column: x => x.UsuarioId,
                         principalTable: "Usuarios",
                         principalColumn: "UsuarioId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -146,59 +146,65 @@ namespace Sistema.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     UsuarioId = table.Column<int>(nullable: false),
                     ClienteId = table.Column<int>(nullable: false),
-                    Fecha = table.Column<DateTime>(type: "date", nullable: false),
-                    TipoPago = table.Column<string>(unicode: false, maxLength: 100, nullable: true)
+                    Fecha = table.Column<DateTime>(nullable: false),
+                    TipoPago = table.Column<string>(nullable: true),
+                    TotalPago = table.Column<decimal>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("Pagos_pk", x => x.PagoId);
+                    table.PrimaryKey("PK_Pagos", x => x.PagoId);
                     table.ForeignKey(
-                        name: "Pagos___fk___Clientes",
+                        name: "FK_Pagos_Clientes_ClienteId",
                         column: x => x.ClienteId,
                         principalTable: "Clientes",
                         principalColumn: "ClienteId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "Pagos___fk___Usuarios",
+                        name: "FK_Pagos_Usuarios_UsuarioId",
                         column: x => x.UsuarioId,
                         principalTable: "Usuarios",
                         principalColumn: "UsuarioId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
                 name: "CotizacionesDetalle",
                 columns: table => new
                 {
+                    CotizaconesDetalleId = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
                     CotizacionId = table.Column<int>(nullable: false),
                     ArticuloId = table.Column<int>(nullable: false),
                     Codigo = table.Column<string>(nullable: true),
                     Descripcion = table.Column<string>(nullable: true),
                     Costo = table.Column<decimal>(nullable: false),
                     Impuesto = table.Column<double>(nullable: true),
-                    Precio = table.Column<decimal>(type: "money", nullable: false),
+                    Precio = table.Column<decimal>(nullable: false),
                     Contidad = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
+                    table.PrimaryKey("PK_CotizacionesDetalle", x => x.CotizaconesDetalleId);
                     table.ForeignKey(
-                        name: "CotizacionDetalles___fk___Articulos",
+                        name: "FK_CotizacionesDetalle_Articulos_ArticuloId",
                         column: x => x.ArticuloId,
                         principalTable: "Articulos",
                         principalColumn: "ArticuloId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "CotizacionDetalles___fk___Cotizaciones",
+                        name: "FK_CotizacionesDetalle_Cotizaciones_CotizacionId",
                         column: x => x.CotizacionId,
                         principalTable: "Cotizaciones",
                         principalColumn: "CotizacionId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
                 name: "FacturasDetalle",
                 columns: table => new
                 {
+                    FacturasDetalleId = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
                     FacturaId = table.Column<int>(nullable: false),
                     ArticuloId = table.Column<int>(nullable: false),
                     Codigo = table.Column<string>(nullable: true),
@@ -210,14 +216,15 @@ namespace Sistema.Migrations
                 },
                 constraints: table =>
                 {
+                    table.PrimaryKey("PK_FacturasDetalle", x => x.FacturasDetalleId);
                     table.ForeignKey(
-                        name: "FacturaDetalles___fk__Articulos",
+                        name: "FK_FacturasDetalle_Articulos_ArticuloId",
                         column: x => x.ArticuloId,
                         principalTable: "Articulos",
                         principalColumn: "ArticuloId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FacturaDetalles___fk__Facturas",
+                        name: "FK_FacturasDetalle_Facturas_FacturaId",
                         column: x => x.FacturaId,
                         principalTable: "Facturas",
                         principalColumn: "FacturaId",
@@ -228,20 +235,24 @@ namespace Sistema.Migrations
                 name: "PagosDetalle",
                 columns: table => new
                 {
+                    PagosDetalleId = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
                     PagoId = table.Column<int>(nullable: false),
                     FacturaId = table.Column<int>(nullable: false),
-                    Monto = table.Column<decimal>(type: "money", nullable: false)
+                    NumeroFactura = table.Column<int>(nullable: false),
+                    Monto = table.Column<decimal>(nullable: false)
                 },
                 constraints: table =>
                 {
+                    table.PrimaryKey("PK_PagosDetalle", x => x.PagosDetalleId);
                     table.ForeignKey(
-                        name: "PagoDetalles___fk__Facturas",
+                        name: "FK_PagosDetalle_Facturas_FacturaId",
                         column: x => x.FacturaId,
                         principalTable: "Facturas",
                         principalColumn: "FacturaId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "PagoDetalles___fk__Pagos",
+                        name: "FK_PagosDetalle_Pagos_PagoId",
                         column: x => x.PagoId,
                         principalTable: "Pagos",
                         principalColumn: "PagoId",

@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Sistema.Entidades
 {
     public partial class FacturasDetalle
     {
+        [Key]
+        public int FacturasDetalleId { get; set; }
         public int FacturaId { get; set; }
         public int ArticuloId { get; set; }
 

@@ -1,12 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Sistema.Entidades
 {
     public partial class CotizacionesDetalle
     {
+        [Key]
+        public int CotizaconesDetalleId { get; set; }
         public int CotizacionId { get; set; }
         public int ArticuloId { get; set; }
+
         public string Codigo { get; set; }
         public string Descripcion { get; set; }
         public decimal Costo { get; set; }
