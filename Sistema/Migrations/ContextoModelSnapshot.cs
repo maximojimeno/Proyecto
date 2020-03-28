@@ -22,11 +22,11 @@ namespace Sistema.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<int>("Cantidad")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("Codigo")
                         .HasColumnType("TEXT");
-
-                    b.Property<int>("Contidad")
-                        .HasColumnType("INTEGER");
 
                     b.Property<decimal>("Costo")
                         .HasColumnType("TEXT");
@@ -59,8 +59,8 @@ namespace Sistema.Migrations
                     b.Property<string>("Apellidos")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("Cedula")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("Cedula")
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Celular")
                         .HasColumnType("TEXT");
@@ -132,11 +132,11 @@ namespace Sistema.Migrations
                     b.Property<int>("ArticuloId")
                         .HasColumnType("INTEGER");
 
+                    b.Property<int>("Cantidad")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("Codigo")
                         .HasColumnType("TEXT");
-
-                    b.Property<int>("Contidad")
-                        .HasColumnType("INTEGER");
 
                     b.Property<decimal>("Costo")
                         .HasColumnType("TEXT");
@@ -210,11 +210,11 @@ namespace Sistema.Migrations
                     b.Property<int>("ArticuloId")
                         .HasColumnType("INTEGER");
 
+                    b.Property<int>("Cantidad")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("Codigo")
                         .HasColumnType("TEXT");
-
-                    b.Property<int>("Contidad")
-                        .HasColumnType("INTEGER");
 
                     b.Property<decimal>("Costo")
                         .HasColumnType("TEXT");

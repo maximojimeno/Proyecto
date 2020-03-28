@@ -36,7 +36,7 @@ namespace Sistema.Migrations
                     Costo = table.Column<decimal>(nullable: false),
                     Impuesto = table.Column<double>(nullable: true),
                     Precio = table.Column<decimal>(nullable: false),
-                    Contidad = table.Column<int>(nullable: false)
+                    Cantidad = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -58,7 +58,7 @@ namespace Sistema.Migrations
                     UsuarioId = table.Column<int>(nullable: false),
                     Nombres = table.Column<string>(nullable: true),
                     Apellidos = table.Column<string>(nullable: true),
-                    Cedula = table.Column<int>(nullable: false),
+                    Cedula = table.Column<string>(nullable: true),
                     Correo = table.Column<string>(nullable: true),
                     Telefono = table.Column<string>(nullable: true),
                     Celular = table.Column<string>(nullable: true),
@@ -180,7 +180,7 @@ namespace Sistema.Migrations
                     Costo = table.Column<decimal>(nullable: false),
                     Impuesto = table.Column<double>(nullable: true),
                     Precio = table.Column<decimal>(nullable: false),
-                    Contidad = table.Column<int>(nullable: false)
+                    Cantidad = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -212,7 +212,7 @@ namespace Sistema.Migrations
                     Costo = table.Column<decimal>(nullable: false),
                     Impuesto = table.Column<double>(nullable: true),
                     Precio = table.Column<decimal>(nullable: false),
-                    Contidad = table.Column<int>(nullable: false)
+                    Cantidad = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
