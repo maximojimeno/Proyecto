@@ -56,30 +56,36 @@ namespace Sistema.BLL
 
         public static bool Eliminar(int id)
         {
-            bool paso = false;
             Contexto db = new Contexto();
+            bool paso = false;
 
             try
             {
-                var eliminar = db.Cotizaciones.Find(id);
+                var eliminar = CotizacionesBLL.Buscar(id);
                 db.Entry(eliminar).State = EntityState.Deleted;
-                
-            }catch(Exception)
+                paso = db.SaveChanges() > 0;
+            }
+            catch (Exception)
             {
                 throw;
-            }finally
+            }
+            finally
             {
                 db.Dispose();
             }
             return paso;
         }
+
         public static Cotizaciones Buscar(int id)
         {
             Contexto db = new Contexto();
             Cotizaciones cotizaciones = new Cotizaciones();
             try
             {
-                cotizaciones = db.Cotizaciones.Include(x => x.CotizacionesDetalles).Where(t => t.CotizacionId == id).SingleOrDefault();
+                cotizaciones = db.Cotizaciones
+                    .Include(x => x.CotizacionesDetalles)
+                    .Where(t => t.CotizacionId == id)
+                    .SingleOrDefault();
 
                     
             }catch(Exception)

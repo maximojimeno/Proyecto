@@ -18,6 +18,9 @@ namespace Sistema.Entidades
             Descuento = 0;
             ImpuestoTotal = 0;
             Total = 0;
+            FacturasDetalles = new List<FacturasDetalle>();
+            PagosDetalles = new List<PagosDetalle>();
+
         }
         [Key]
         public int FacturaId { get; set; }

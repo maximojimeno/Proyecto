@@ -17,6 +17,7 @@ namespace Sistema.Entidades
             Descuento = 0;
             ImpuestoTotal = 0;
             Total = 0;
+            CotizacionesDetalles = new List<CotizacionesDetalle>();
         }
         [Key]
         public int CotizacionId { get; set; }
