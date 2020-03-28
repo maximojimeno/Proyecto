@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Sistema.Entidades
 {
@@ -14,8 +15,6 @@ namespace Sistema.Entidades
         public double? Impuesto { get; set; }
         public decimal Precio { get; set; }
         public int Contidad { get; set; }
-        public List<CotizacionesDetalle> cotizacionesDetalle { get; set; }
-        public List<FacturasDetalle> facturasDetalle { get; set; }
 
         public virtual Usuarios Usuario { get; set; }
     }

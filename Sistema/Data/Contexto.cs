@@ -28,14 +28,14 @@ namespace Sistema.Data
         {
             optionsBuilder.EnableSensitiveDataLogging().UseSqlite(@"Data Source = Data/DataBase.db");
         }
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
             modelBuilder.Entity<Articulos>(entity =>
             {
                 entity.HasKey(e => e.ArticuloId)
                     .HasName("Articulos_pk");
-                    
+
 
                 entity.Property(e => e.Codigo)
                     .HasMaxLength(50)
@@ -54,14 +54,13 @@ namespace Sistema.Data
                     .WithMany(p => p.Articulos)
                     .HasForeignKey(d => d.UsuarioId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("Articulos___fk__Usuarios");
+                    .HasConstraintName("Articulos___fk___Usuarios");
             });
 
             modelBuilder.Entity<Clientes>(entity =>
             {
                 entity.HasKey(e => e.ClienteId)
                     .HasName("Clientes_pk");
-                    
 
                 entity.Property(e => e.Apellidos)
                     .IsRequired()
@@ -90,7 +89,6 @@ namespace Sistema.Data
             {
                 entity.HasKey(e => e.CotizacionId)
                     .HasName("Cotizaciones_pk");
-                    
 
                 entity.Property(e => e.Descuento).HasColumnType("decimal(18, 0)");
 
@@ -99,13 +97,13 @@ namespace Sistema.Data
                 entity.HasOne(d => d.Cliente)
                     .WithMany(p => p.Cotizaciones)
                     .HasForeignKey(d => d.ClienteId)
-                    .HasConstraintName("Cotizaciones___fk__Clientes");
+                    .HasConstraintName("Cotizaciones___fk___Clientes");
 
                 entity.HasOne(d => d.Usuario)
                     .WithMany(p => p.Cotizaciones)
                     .HasForeignKey(d => d.UsuarioId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("Cotizaciones___fk__Usuarios");
+                    .HasConstraintName("Cotizaciones___fk___Usuarios");
             });
 
             modelBuilder.Entity<CotizacionesDetalle>(entity =>
@@ -118,19 +116,19 @@ namespace Sistema.Data
                     .WithMany()
                     .HasForeignKey(d => d.ArticuloId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("CotizacionDetalles___fk__Articulos");
+                    .HasConstraintName("CotizacionDetalles___fk___Articulos");
 
                 entity.HasOne(d => d.Cotizacion)
                     .WithMany()
                     .HasForeignKey(d => d.CotizacionId)
-                    .HasConstraintName("CotizacionDetalles___fk__Cotizaciones");
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("CotizacionDetalles___fk___Cotizaciones");
             });
 
             modelBuilder.Entity<Facturas>(entity =>
             {
                 entity.HasKey(e => e.FacturaId)
                     .HasName("Facturas_pk");
-                   
 
                 entity.Property(e => e.Descuento).HasColumnType("decimal(18, 0)");
 
@@ -143,13 +141,13 @@ namespace Sistema.Data
                 entity.HasOne(d => d.Cliente)
                     .WithMany(p => p.Facturas)
                     .HasForeignKey(d => d.ClienteId)
-                    .HasConstraintName("Facturas___fk__Clientes");
+                    .HasConstraintName("Facturas___fk___Clientes");
 
                 entity.HasOne(d => d.Usuario)
                     .WithMany(p => p.Facturas)
                     .HasForeignKey(d => d.UsuarioId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("Facturas___fk__Usuarios");
+                    .HasConstraintName("Facturas___fk___Usuarios");
             });
 
             modelBuilder.Entity<FacturasDetalle>(entity =>
@@ -172,7 +170,6 @@ namespace Sistema.Data
             {
                 entity.HasKey(e => e.PagoId)
                     .HasName("Pagos_pk");
-                    
 
                 entity.Property(e => e.Fecha).HasColumnType("date");
 
@@ -183,13 +180,13 @@ namespace Sistema.Data
                 entity.HasOne(d => d.Cliente)
                     .WithMany(p => p.Pagos)
                     .HasForeignKey(d => d.ClienteId)
-                    .HasConstraintName("Pagos___fk__Clientes");
+                    .HasConstraintName("Pagos___fk___Clientes");
 
                 entity.HasOne(d => d.Usuario)
                     .WithMany(p => p.Pagos)
                     .HasForeignKey(d => d.UsuarioId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("Pagos___fk__Usuarios");
+                    .HasConstraintName("Pagos___fk___Usuarios");
             });
 
             modelBuilder.Entity<PagosDetalle>(entity =>
@@ -214,7 +211,6 @@ namespace Sistema.Data
             {
                 entity.HasKey(e => e.UsuarioId)
                     .HasName("Usuarios_pk");
-                    
 
                 entity.Property(e => e.Apellidos)
                     .IsRequired()
@@ -244,6 +240,7 @@ namespace Sistema.Data
 
             OnModelCreatingPartial(modelBuilder);
         }
+
 
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
     }

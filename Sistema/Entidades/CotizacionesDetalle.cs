@@ -13,7 +13,7 @@ namespace Sistema.Entidades
         public double? Impuesto { get; set; }
         public decimal Precio { get; set; }
         public int Contidad { get; set; }
-        public List<CotizacionesDetalle> cotizacionesDetalle { get; set; }
+
         public virtual Articulos Articulo { get; set; }
         public virtual Cotizaciones Cotizacion { get; set; }
     }
