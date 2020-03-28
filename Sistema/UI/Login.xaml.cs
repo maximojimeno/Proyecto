@@ -10,7 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Sistema.BLL;
-using Sistema.Models;
+using Sistema.Entidades;
 
 
 namespace Sistema.UI
