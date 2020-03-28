@@ -9,15 +9,22 @@ namespace Sistema.Entidades
     {
         public Clientes()
         {
-
+            ClienteId = 0;
+            UsuarioId = 0;
+            Nombres = string.Empty;
+            Apellidos = string.Empty;
+            Cedula = string.Empty;
+            Correo = string.Empty;
+            Telefono = string.Empty;
+            Celular = string.Empty;
+            Direccion = string.Empty;
         }
-
         [Key]
         public int ClienteId { get; set; }
         public int UsuarioId { get; set; }
         public string Nombres { get; set; }
         public string Apellidos { get; set; }
-        public int Cedula { get; set; }
+        public string Cedula { get; set; }
         public string Correo { get; set; }
         public string Telefono { get; set; }
         public string? Celular { get; set; }
