@@ -42,5 +42,6 @@ namespace Sistema.Entidades
         public virtual List<Facturas> Facturas { get; set; }
         [ForeignKey("ClienteId")]
         public virtual List<Pagos> Pagos { get; set; }
+
     }
 }

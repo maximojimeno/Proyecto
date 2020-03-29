@@ -17,28 +17,31 @@ namespace Sistema.UI.Registro
     /// <summary>
     /// Interaction logic for RegistroBase.xaml
     /// </summary>
-    public partial class RegistroBase : Window
+    public partial class RegistroClientes : Window
     {
-        Articulos articulos = new Articulos();
+        Usuarios usuarios = new Usuarios();
+        
+        Clientes clientes = new Clientes();
        
-        public RegistroBase()
+       
+        public RegistroClientes()
         {
             InitializeComponent();
-            this.DataContext = articulos;
-            ArticuloIdTextBox.Text = "0";
+            this.DataContext = clientes;
+            ClienteIdTextBox.Text = "0";
             
         }
         private void Limpiar()
         {
             
-           ArticuloIdTextBox.Text = "0";
-           CodigoTextBox.Text = string.Empty;
-            DescripcionTextBox.Text = string.Empty;
-            CostoTextBox.Text = string.Empty;
-            ImpuestoTextBox.Text = string.Empty;
-            PrecioTextBox.Text = string.Empty;
-            CantidadTextBox.Text = string.Empty;
-            
+            ClienteIdTextBox.Text = "0";
+            NombresTextBox.Text = string.Empty;
+            ApellidosTextBox.Text = string.Empty;
+            CedulaTextBox.Text = string.Empty;
+            CorreoTextBox.Text = string.Empty;
+            TelefonoTextBox.Text = string.Empty;
+            CelularTextBox.Text = string.Empty;
+            DireccionTextBox.Text = string.Empty;
         }
 
         private void CloseWinBtn(object sender, RoutedEventArgs e)
@@ -51,16 +54,16 @@ namespace Sistema.UI.Registro
             Limpiar();
         }
 
-        private bool ExisteBDatos()
+        private bool ExisteBD()
         {
-            articulos = ArticuloBLL.Buscar(Convert.ToInt32(ArticuloIdTextBox.Text));
-            return (articulos != null);
+            clientes = ClientesBLL.Buscar(Convert.ToInt32(ClienteIdTextBox.Text));
+            return (clientes != null);
         }
 
         private void Actualizar()
         {
             this.DataContext = null;
-            this.DataContext = articulos;
+            this.DataContext = clientes;
         }
 
         
@@ -71,16 +74,16 @@ namespace Sistema.UI.Registro
            
 
             Actualizar();
-            if (string.IsNullOrWhiteSpace(ArticuloIdTextBox.Text) || ArticuloIdTextBox.Text == "0")
-                paso = ArticuloBLL.Guardar(articulos);
+            if (string.IsNullOrWhiteSpace(ClienteIdTextBox.Text) || ClienteIdTextBox.Text == "0")
+                paso = ClientesBLL.Guardar(clientes);
             else
             {
-                if(!ExisteBDatos())
+                if(!ExisteBD())
                 {
                     MessageBox.Show("No se puede modificar porque no existe", "Fallo", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
-                paso = ArticuloBLL.Modificar(articulos);
+                paso = ClientesBLL.Modificar(clientes);
             }
             if(paso)
             {
@@ -96,24 +99,24 @@ namespace Sistema.UI.Registro
         private void EliminarButton_Click(object sender, RoutedEventArgs e)
         {
             int id;
-            id = Convert.ToInt32(ArticuloIdTextBox.Text);
+            id = Convert.ToInt32(ClienteIdTextBox.Text);
 
             Limpiar();
-            if (ArticuloBLL.Eliminar(id))
+            if (ClientesBLL.Eliminar(id))
                 MessageBox.Show("Eliminado", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
             else
             {
-                MessageBox.Show(ArticuloIdTextBox.Text,"No se pudo eliminar porque no existe");
+                MessageBox.Show(ClienteIdTextBox.Text,"No se pudo eliminar porque no existe");
             }
         }
 
         private void BuscarButton_Click(object sender, RoutedEventArgs e)
         {
-           Articulos anterior = ArticuloBLL.Buscar(Convert.ToInt32(ArticuloIdTextBox.Text));
+            Clientes anterior = ClientesBLL.Buscar(Convert.ToInt32(ClienteIdTextBox.Text));
 
             if(anterior !=null)
             {
-               articulos = anterior;
+                clientes = anterior;
                 Actualizar();
             }
             else

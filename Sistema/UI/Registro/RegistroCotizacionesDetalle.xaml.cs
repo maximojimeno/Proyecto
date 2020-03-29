@@ -17,11 +17,13 @@ namespace Sistema.UI.Registro
     /// <summary>
     /// Interaction logic for RegistroBase.xaml
     /// </summary>
-    public partial class RegistroBase : Window
+    public partial class RegistroArticulos : Window
     {
+       
         Articulos articulos = new Articulos();
        
-        public RegistroBase()
+       
+        public RegistroArticulos()
         {
             InitializeComponent();
             this.DataContext = articulos;
@@ -53,7 +55,7 @@ namespace Sistema.UI.Registro
 
         private bool ExisteBDatos()
         {
-            articulos = ArticuloBLL.Buscar(Convert.ToInt32(ArticuloIdTextBox.Text));
+           articulos = ArticuloBLL.Buscar(Convert.ToInt32(ArticuloIdTextBox.Text));
             return (articulos != null);
         }
 
@@ -99,7 +101,7 @@ namespace Sistema.UI.Registro
             id = Convert.ToInt32(ArticuloIdTextBox.Text);
 
             Limpiar();
-            if (ArticuloBLL.Eliminar(id))
+            if (ClientesBLL.Eliminar(id))
                 MessageBox.Show("Eliminado", "Exito", MessageBoxButton.OK, MessageBoxImage.Information);
             else
             {
@@ -109,11 +111,11 @@ namespace Sistema.UI.Registro
 
         private void BuscarButton_Click(object sender, RoutedEventArgs e)
         {
-           Articulos anterior = ArticuloBLL.Buscar(Convert.ToInt32(ArticuloIdTextBox.Text));
+            Articulos anterior = ArticuloBLL.Buscar(Convert.ToInt32(ArticuloIdTextBox.Text));
 
             if(anterior !=null)
             {
-               articulos = anterior;
+                articulos = anterior;
                 Actualizar();
             }
             else

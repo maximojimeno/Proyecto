@@ -1,4 +1,4 @@
-﻿<Window x:Class="Sistema.UI.Registro.RegistroBase"
+﻿<Window x:Class="Sistema.UI.Registro.RegistroArticulos"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         Background="{DynamicResource MaterialDesignPaper}"
         TextElement.FontWeight="Medium"
@@ -28,15 +28,15 @@
                 </Button>
             </StackPanel>
         </materialDesign:ColorZone>
-        <TextBlock Grid.Row="1" Text="Registro Artículos" HorizontalAlignment="Center" FontSize="35" VerticalAlignment="Center"/>
-        <Label Content="Artículo Id" HorizontalAlignment="Left" Margin="15,52,0,0" Grid.Row="2" VerticalAlignment="Top"/>
-        <Label Content="Código" HorizontalAlignment="Left" Margin="15,104,0,0" Grid.Row="2" VerticalAlignment="Top"/>
-        <Label Content="Descripción" HorizontalAlignment="Left" Margin="16,161,0,0" Grid.Row="2" VerticalAlignment="Top"/>
-        <Label Content="Costo" HorizontalAlignment="Left" Margin="22,219,0,0" Grid.Row="2" VerticalAlignment="Top"/>
-        <Label Content="Impuesto" HorizontalAlignment="Left" Margin="22,274,0,0" Grid.Row="2" VerticalAlignment="Top"/>
-        <Label Content="Precio" HorizontalAlignment="Left" Margin="18,332,0,0" Grid.Row="2" VerticalAlignment="Top"/>
-        <Label Content="Cantidad" HorizontalAlignment="Left" Margin="22,388,0,0" Grid.Row="2" VerticalAlignment="Top"/>
-        
+        <TextBlock Grid.Row="1" Text="Registro Cotizaciones" HorizontalAlignment="Center" FontSize="35" VerticalAlignment="Center"/>
+        <Label Content="Cotización Id" HorizontalAlignment="Left" Margin="15,52,0,0" Grid.Row="2" VerticalAlignment="Top"/>
+        <Label Content="Código" HorizontalAlignment="Left" Margin="22,89,0,0" Grid.Row="2" VerticalAlignment="Top"/>
+        <Label Content="Fecha" HorizontalAlignment="Left" Margin="22,129,0,0" Grid.Row="2" VerticalAlignment="Top"/>
+        <Label Content="Numero Cotizacion" HorizontalAlignment="Left" Margin="15,183,0,0" Grid.Row="2" VerticalAlignment="Top"/>
+        <Label Content="Descuento" HorizontalAlignment="Left" Margin="28,230,0,0" Grid.Row="2" VerticalAlignment="Top"/>
+        <Label Content="ImpuestoTotal" HorizontalAlignment="Left" Margin="15,276,0,0" Grid.Row="2" VerticalAlignment="Top"/>
+        <Label Content="Total" HorizontalAlignment="Left" Margin="35,304,0,0" Grid.Row="2" VerticalAlignment="Top"/>
+
 
         <TextBox x:Name="ArticuloIdTextBox" HorizontalAlignment="Left" Margin="106,52,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="120">
             <TextBox.Text>
@@ -48,7 +48,7 @@
             </TextBox.Text>
         </TextBox>
 
-        <TextBox x:Name="CodigoTextBox" HorizontalAlignment="Left" Margin="106,104,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="120">
+        <TextBox x:Name="CodigoTextBox" HorizontalAlignment="Left" Margin="106,88,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="120">
             <TextBox.Text>
                 <Binding Path="Codigo" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                     <Binding.ValidationRules>
@@ -58,7 +58,7 @@
             </TextBox.Text>
         </TextBox>
 
-        <TextBox x:Name="DescripcionTextBox" HorizontalAlignment="Left" Margin="106,161,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="120">
+        <TextBox x:Name="DescripcionTextBox" HorizontalAlignment="Left" Margin="106,129,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="120">
             <TextBox.Text>
                 <Binding Path="Descripcion" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                     <Binding.ValidationRules>
@@ -68,7 +68,7 @@
             </TextBox.Text>
         </TextBox>
 
-        <TextBox x:Name="CostoTextBox" HorizontalAlignment="Left" Margin="106,210,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="120">
+        <TextBox x:Name="CostoTextBox" HorizontalAlignment="Left" Margin="136,182,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="120">
             <TextBox.Text>
                 <Binding Path="Costo" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                     <Binding.ValidationRules>
@@ -77,7 +77,7 @@
                 </Binding>
             </TextBox.Text>
         </TextBox>
-        <TextBox x:Name="ImpuestoTextBox" HorizontalAlignment="Left" Margin="106,274,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="120">
+        <TextBox x:Name="ImpuestoTextBox" HorizontalAlignment="Left" Margin="136,230,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="120">
             <TextBox.Text>
                 <Binding Path="Impuesto" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                     <Binding.ValidationRules>
@@ -87,7 +87,7 @@
             </TextBox.Text>
         </TextBox>
 
-        <TextBox x:Name="PrecioTextBox" HorizontalAlignment="Left" Margin="106,331,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="120">
+        <TextBox x:Name="PrecioTextBox" HorizontalAlignment="Left" Margin="136,275,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="120">
             <TextBox.Text>
                 <Binding Path="Precio" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                     <Binding.ValidationRules>
@@ -97,7 +97,7 @@
             </TextBox.Text>
         </TextBox>
 
-        <TextBox x:Name="CantidadTextBox" HorizontalAlignment="Left" Margin="106,388,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="120">
+        <TextBox x:Name="CantidadTextBox" HorizontalAlignment="Left" Margin="136,315,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="120">
             <TextBox.Text>
                 <Binding Path="Cantidad" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                     <Binding.ValidationRules>
@@ -106,7 +106,7 @@
                 </Binding>
             </TextBox.Text>
         </TextBox>
-        
+
 
         <Button x:Name="NuevoButton" Content="Nuevo" Grid.Column="1" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="88,0,0,0" Grid.Row="3" VerticalAlignment="Center" Height="45" Width="96" FontWeight="Bold" Click="NuevoButton_Click">
             <Button.Background>

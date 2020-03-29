@@ -1,4 +1,4 @@
-﻿<Window x:Class="Sistema.UI.Registro.RegistroBase"
+﻿<Window x:Class="Sistema.UI.Registro.RegistroClientes"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         Background="{DynamicResource MaterialDesignPaper}"
         TextElement.FontWeight="Medium"
@@ -28,29 +28,19 @@
                 </Button>
             </StackPanel>
         </materialDesign:ColorZone>
-        <TextBlock Grid.Row="1" Text="Registro Artículos" HorizontalAlignment="Center" FontSize="35" VerticalAlignment="Center"/>
-        <Label Content="Artículo Id" HorizontalAlignment="Left" Margin="15,52,0,0" Grid.Row="2" VerticalAlignment="Top"/>
-        <Label Content="Código" HorizontalAlignment="Left" Margin="15,104,0,0" Grid.Row="2" VerticalAlignment="Top"/>
-        <Label Content="Descripción" HorizontalAlignment="Left" Margin="16,161,0,0" Grid.Row="2" VerticalAlignment="Top"/>
-        <Label Content="Costo" HorizontalAlignment="Left" Margin="22,219,0,0" Grid.Row="2" VerticalAlignment="Top"/>
-        <Label Content="Impuesto" HorizontalAlignment="Left" Margin="22,274,0,0" Grid.Row="2" VerticalAlignment="Top"/>
-        <Label Content="Precio" HorizontalAlignment="Left" Margin="18,332,0,0" Grid.Row="2" VerticalAlignment="Top"/>
-        <Label Content="Cantidad" HorizontalAlignment="Left" Margin="22,388,0,0" Grid.Row="2" VerticalAlignment="Top"/>
-        
+        <TextBlock Grid.Row="1" Text="Registro Clientes" HorizontalAlignment="Center" FontSize="35" VerticalAlignment="Center"/>
+        <Label Content="Cliente Id" HorizontalAlignment="Left" Margin="15,52,0,0" Grid.Row="2" VerticalAlignment="Top"/>
+        <Label Content="Nombres" HorizontalAlignment="Left" Margin="15,104,0,0" Grid.Row="2" VerticalAlignment="Top"/>
+        <Label Content="Apellidos" HorizontalAlignment="Left" Margin="16,161,0,0" Grid.Row="2" VerticalAlignment="Top"/>
+        <Label Content="Cédula" HorizontalAlignment="Left" Margin="22,219,0,0" Grid.Row="2" VerticalAlignment="Top"/>
+        <Label Content="Correo" HorizontalAlignment="Left" Margin="22,274,0,0" Grid.Row="2" VerticalAlignment="Top"/>
+        <Label Content="Teléfono" HorizontalAlignment="Left" Margin="18,332,0,0" Grid.Row="2" VerticalAlignment="Top"/>
+        <Label Content="Celular" HorizontalAlignment="Left" Margin="22,388,0,0" Grid.Row="2" VerticalAlignment="Top"/>
+        <Label Content="Dirección" HorizontalAlignment="Left" Margin="16,436,0,0" Grid.Row="2" VerticalAlignment="Top"/>
 
-        <TextBox x:Name="ArticuloIdTextBox" HorizontalAlignment="Left" Margin="106,52,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="120">
+        <TextBox x:Name="ClienteIdTextBox" HorizontalAlignment="Left" Margin="106,52,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="120">
             <TextBox.Text>
-                <Binding Path="ArticuloId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
-                    <Binding.ValidationRules>
-                        <ExceptionValidationRule/>
-                    </Binding.ValidationRules>
-                </Binding>
-            </TextBox.Text>
-        </TextBox>
-
-        <TextBox x:Name="CodigoTextBox" HorizontalAlignment="Left" Margin="106,104,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="120">
-            <TextBox.Text>
-                <Binding Path="Codigo" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                <Binding Path="ClienteId" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                     <Binding.ValidationRules>
                         <ExceptionValidationRule/>
                     </Binding.ValidationRules>
@@ -58,9 +48,9 @@
             </TextBox.Text>
         </TextBox>
 
-        <TextBox x:Name="DescripcionTextBox" HorizontalAlignment="Left" Margin="106,161,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="120">
+        <TextBox x:Name="NombresTextBox" HorizontalAlignment="Left" Margin="106,104,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="120">
             <TextBox.Text>
-                <Binding Path="Descripcion" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                <Binding Path="Nombres" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                     <Binding.ValidationRules>
                         <ExceptionValidationRule/>
                     </Binding.ValidationRules>
@@ -68,18 +58,9 @@
             </TextBox.Text>
         </TextBox>
 
-        <TextBox x:Name="CostoTextBox" HorizontalAlignment="Left" Margin="106,210,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="120">
+        <TextBox x:Name="ApellidosTextBox" HorizontalAlignment="Left" Margin="106,161,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="120">
             <TextBox.Text>
-                <Binding Path="Costo" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
-                    <Binding.ValidationRules>
-                        <ExceptionValidationRule/>
-                    </Binding.ValidationRules>
-                </Binding>
-            </TextBox.Text>
-        </TextBox>
-        <TextBox x:Name="ImpuestoTextBox" HorizontalAlignment="Left" Margin="106,274,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="120">
-            <TextBox.Text>
-                <Binding Path="Impuesto" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                <Binding Path="Apellidos" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                     <Binding.ValidationRules>
                         <ExceptionValidationRule/>
                     </Binding.ValidationRules>
@@ -87,9 +68,18 @@
             </TextBox.Text>
         </TextBox>
 
-        <TextBox x:Name="PrecioTextBox" HorizontalAlignment="Left" Margin="106,331,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="120">
+        <TextBox x:Name="CedulaTextBox" HorizontalAlignment="Left" Margin="106,210,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="120">
             <TextBox.Text>
-                <Binding Path="Precio" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                <Binding Path="Cedula" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                    <Binding.ValidationRules>
+                        <ExceptionValidationRule/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+        <TextBox x:Name="CorreoTextBox" HorizontalAlignment="Left" Margin="106,274,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="120">
+            <TextBox.Text>
+                <Binding Path="Correo" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                     <Binding.ValidationRules>
                         <ExceptionValidationRule/>
                     </Binding.ValidationRules>
@@ -97,16 +87,34 @@
             </TextBox.Text>
         </TextBox>
 
-        <TextBox x:Name="CantidadTextBox" HorizontalAlignment="Left" Margin="106,388,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="120">
+        <TextBox x:Name="TelefonoTextBox" HorizontalAlignment="Left" Margin="106,331,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="120">
             <TextBox.Text>
-                <Binding Path="Cantidad" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                <Binding Path="Telefono" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
                     <Binding.ValidationRules>
                         <ExceptionValidationRule/>
                     </Binding.ValidationRules>
                 </Binding>
             </TextBox.Text>
         </TextBox>
-        
+
+        <TextBox x:Name="CelularTextBox" HorizontalAlignment="Left" Margin="106,388,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="120">
+            <TextBox.Text>
+                <Binding Path="Celular" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                    <Binding.ValidationRules>
+                        <ExceptionValidationRule/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+        <TextBox x:Name="DireccionTextBox" HorizontalAlignment="Left" Margin="106,436,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="120">
+            <TextBox.Text>
+                <Binding Path="Direccion" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay">
+                    <Binding.ValidationRules>
+                        <ExceptionValidationRule/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
 
         <Button x:Name="NuevoButton" Content="Nuevo" Grid.Column="1" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="88,0,0,0" Grid.Row="3" VerticalAlignment="Center" Height="45" Width="96" FontWeight="Bold" Click="NuevoButton_Click">
             <Button.Background>
