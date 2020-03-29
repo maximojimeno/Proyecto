@@ -9,36 +9,22 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using Sistema.UI.Registro;
 
-namespace Sistema.UI
+namespace Sistema.UI.Registro
 {
     /// <summary>
-    /// Interaction logic for Menu.xaml
+    /// Interaction logic for RegistroBase.xaml
     /// </summary>
-    public partial class Principal : Window
+    public partial class RegistroBase : Window
     {
-        public Principal()
+        public RegistroBase()
         {
             InitializeComponent();
-
-            
         }
 
         private void CloseWinBtn(object sender, RoutedEventArgs e)
         {
             Close();
         }
-        
-        private void ColorZone_DpiChanged(object sender, DpiChangedEventArgs e)
-        {
-
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            RegistroBase registroBase = new RegistroBase();
-            registroBase.Show();
-        }   
     }
 }

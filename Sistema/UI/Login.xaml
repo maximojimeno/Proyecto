@@ -24,7 +24,7 @@
         <Grid>
             <materialDesign:ColorZone Mode="Dark">
                 <StackPanel HorizontalAlignment="Right">
-                    <Button Width="30" Height="30" materialDesign:ShadowAssist.ShadowDepth="Depth3" Padding="0" Click="CloseWinBtn">
+                    <Button Width="30" Height="30" materialDesign:ShadowAssist.ShadowDepth="Depth3" Padding="0" Click="CloseWinBtn" Background="#FFFD0000">
                         <materialDesign:PackIcon Kind="WindowClose" />
                     </Button>
                 </StackPanel>

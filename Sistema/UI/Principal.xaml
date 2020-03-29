@@ -11,8 +11,73 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Sistema.UI"
         mc:Ignorable="d"
-        Title="Principal" Height="450" Width="800">
+        Height="600" Width="800" WindowStyle="None" AllowsTransparency="True" WindowState="Maximized">
     <Grid>
-           
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="31*"/>
+            <ColumnDefinition Width="49*"/>
+            <ColumnDefinition Width="40*"/>
+            <ColumnDefinition Width="40*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <materialDesign:ColorZone Mode="Dark" Height="40" Grid.Row="0"  Grid.ColumnSpan="4">
+            <StackPanel HorizontalAlignment="Right">
+                <Button Width="40" Height="40" materialDesign:ShadowAssist.ShadowDepth="Depth3" Padding="0" Click="CloseWinBtn" Background="#FFFF0A0A">
+                    <materialDesign:PackIcon Kind="WindowClose" />
+                </Button>
+            </StackPanel>
+        </materialDesign:ColorZone>
+        <materialDesign:ColorZone Padding="0,0,0,80" Grid.Column="0"  MinHeight="530" Margin="0,40,0,0" Grid.RowSpan="4" Background="#FF317DA0" VerticalAlignment="Stretch"/>
+        <StackPanel Grid.Column="0" Grid.Row="0" Margin="0,40,0,0" Grid.RowSpan="4">
+            <Button
+    Style="{StaticResource MaterialDesignRaisedDarkButton}"
+    Width="100"
+    ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" Click="Button_Click">
+                menu1
+            </Button>
+            <Button
+    Style="{StaticResource MaterialDesignRaisedDarkButton}"
+    Width="100"
+    ToolTip="Resource name: MaterialDesignRaisedLightDarkButton">
+                menu2
+            </Button>
+            <Button
+    Style="{StaticResource MaterialDesignRaisedDarkButton}"
+    Width="100"
+    ToolTip="Resource name: MaterialDesignRaisedLightDarkButton">
+                menu3
+            </Button>
+            <Button
+    Style="{StaticResource MaterialDesignRaisedDarkButton}"
+    Width="100"
+    ToolTip="Resource name: MaterialDesignRaisedLightDarkButton">
+                menu4
+            </Button>
+            <Button
+    Style="{StaticResource MaterialDesignRaisedDarkButton}"
+    Width="100"
+    ToolTip="Resource name: MaterialDesignRaisedLightDarkButton">
+                menu5
+            </Button>
+            <Button
+    Style="{StaticResource MaterialDesignRaisedDarkButton}"
+    Width="100"
+    ToolTip="Resource name: MaterialDesignRaisedLightDarkButton">
+                menu6
+            </Button>
+            <Button
+    Style="{StaticResource MaterialDesignRaisedDarkButton}"
+    Width="100"
+    ToolTip="Resource name: MaterialDesignRaisedLightDarkButton">
+                menu7
+            </Button>
+        </StackPanel>
+
+       
     </Grid>
 </Window>
