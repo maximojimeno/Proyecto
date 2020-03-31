@@ -14,6 +14,7 @@ namespace Sistema.Entidades
             Nombres = string.Empty;
             Apellidos = string.Empty;
             Cedula = string.Empty;
+            Balance = 0;
             Correo = string.Empty;
             Telefono = string.Empty;
             Celular = string.Empty;
@@ -29,6 +30,7 @@ namespace Sistema.Entidades
         public string Nombres { get; set; }
         public string Apellidos { get; set; }
         public string Cedula { get; set; }
+        public int Balance { get; set; }
         public string Correo { get; set; }
         public string Telefono { get; set; }
         public string? Celular { get; set; }

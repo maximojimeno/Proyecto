@@ -37,8 +37,8 @@ namespace Sistema.UI
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            RegistroBase registroBase = new RegistroBase();
-            registroBase.Show();
+            RegistroUsuarios registroUsuarios = new RegistroUsuarios();
+            registroUsuarios.Show();
         }   
     }
 }

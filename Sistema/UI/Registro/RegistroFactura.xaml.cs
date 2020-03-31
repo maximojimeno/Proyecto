@@ -21,7 +21,6 @@ namespace Sistema.UI.Registro
     {
 
 
-
         Facturas facturas = new Facturas();
         Articulos articulos = new Articulos();
         public RegistroFactura()
@@ -183,6 +182,16 @@ namespace Sistema.UI.Registro
             {
                 MessageBox.Show(" No eliminado !!!", "Informacion", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
+        }
+
+        private void AgregarBtn(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void RemoverBtn(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
