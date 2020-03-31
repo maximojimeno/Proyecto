@@ -10,7 +10,7 @@ using System.Linq;
 
 namespace Sistema.BLL
 {
-   public class UsuariosBLL
+    public class UsuariosBLL
     {
         public static bool Guardar(Usuarios usuarios)
         {
@@ -18,13 +18,13 @@ namespace Sistema.BLL
             Contexto db = new Contexto();
             try
             {
-               usuarios.Password = GetSHA256(usuarios.Password);
+                usuarios.Password = GetSHA256(usuarios.Password);
 
                 if (db.Usuarios.Add(usuarios) != null)
                 {
                     paso = db.SaveChanges() > 0;
                 }
-                    
+
             }
             catch (Exception)
             {
@@ -38,13 +38,15 @@ namespace Sistema.BLL
             return paso;
         }
 
-        public static bool modificar(Usuarios usuarios)
+        public static bool Modificar(Usuarios usuarios)
         {
             bool paso = false;
             Contexto db = new Contexto();
+            usuarios.Password = GetSHA256(usuarios.Password);
             try
             {
                 db.Entry(usuarios).State = EntityState.Modified;
+                paso = db.SaveChanges() > 0;
             }
             catch (Exception)
             {
@@ -53,7 +55,7 @@ namespace Sistema.BLL
             }
             finally
             {
-                
+
             }
             return paso;
         }
@@ -67,6 +69,27 @@ namespace Sistema.BLL
             paso = db.SaveChanges() > 0;
 
             return paso;
+        }
+
+        public static Usuarios Buscar(int id)
+        {
+            Contexto db = new Contexto();
+            Usuarios usuarios = new Usuarios();
+
+            try
+            {
+                usuarios = db.Usuarios.Find(id);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+
+            }
+            return usuarios;
         }
 
         public static List<Usuarios> GetList(Expression<Func<Usuarios, bool>> usuarios)
