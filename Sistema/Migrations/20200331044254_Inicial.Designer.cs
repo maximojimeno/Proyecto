@@ -9,8 +9,8 @@ using Sistema.Data;
 namespace Sistema.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20200330214444_Initial")]
-    partial class Initial
+    [Migration("20200331044254_Inicial")]
+    partial class Inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -26,9 +26,6 @@ namespace Sistema.Migrations
 
                     b.Property<int>("Cantidad")
                         .HasColumnType("INTEGER");
-
-                    b.Property<string>("Codigo")
-                        .HasColumnType("TEXT");
 
                     b.Property<decimal>("Costo")
                         .HasColumnType("TEXT");
@@ -60,9 +57,6 @@ namespace Sistema.Migrations
 
                     b.Property<string>("Apellidos")
                         .HasColumnType("TEXT");
-
-                    b.Property<int>("Balance")
-                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Cedula")
                         .HasColumnType("TEXT");
@@ -107,11 +101,8 @@ namespace Sistema.Migrations
                     b.Property<DateTime>("Fecha")
                         .HasColumnType("TEXT");
 
-                    b.Property<double?>("ImpuestoTotal")
+                    b.Property<double?>("Impuesto")
                         .HasColumnType("REAL");
-
-                    b.Property<int>("NumeroCotizacion")
-                        .HasColumnType("INTEGER");
 
                     b.Property<int>("Total")
                         .HasColumnType("INTEGER");
@@ -140,17 +131,8 @@ namespace Sistema.Migrations
                     b.Property<int>("Cantidad")
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Codigo")
-                        .HasColumnType("TEXT");
-
-                    b.Property<decimal>("Costo")
-                        .HasColumnType("TEXT");
-
                     b.Property<int>("CotizacionId")
                         .HasColumnType("INTEGER");
-
-                    b.Property<string>("Descripcion")
-                        .HasColumnType("TEXT");
 
                     b.Property<double?>("Impuesto")
                         .HasColumnType("REAL");
@@ -173,6 +155,9 @@ namespace Sistema.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<decimal>("Balance")
+                        .HasColumnType("TEXT");
+
                     b.Property<int>("ClienteId")
                         .HasColumnType("INTEGER");
 
@@ -185,11 +170,8 @@ namespace Sistema.Migrations
                     b.Property<DateTime>("FechaVencimiento")
                         .HasColumnType("TEXT");
 
-                    b.Property<double?>("ImpuestoTotal")
+                    b.Property<double?>("Impuesto")
                         .HasColumnType("REAL");
-
-                    b.Property<int>("NumeroFactura")
-                        .HasColumnType("INTEGER");
 
                     b.Property<decimal>("Total")
                         .HasColumnType("TEXT");
@@ -217,12 +199,6 @@ namespace Sistema.Migrations
 
                     b.Property<int>("Cantidad")
                         .HasColumnType("INTEGER");
-
-                    b.Property<string>("Codigo")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Descripcion")
-                        .HasColumnType("TEXT");
 
                     b.Property<int>("FacturaId")
                         .HasColumnType("INTEGER");
@@ -254,10 +230,7 @@ namespace Sistema.Migrations
                     b.Property<DateTime>("Fecha")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("TipoPago")
-                        .HasColumnType("TEXT");
-
-                    b.Property<decimal>("TotalPago")
+                    b.Property<decimal>("Total")
                         .HasColumnType("TEXT");
 
                     b.Property<int>("UsuarioId")
@@ -281,14 +254,11 @@ namespace Sistema.Migrations
                     b.Property<int>("FacturaId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<decimal>("Monto")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("NumeroFactura")
-                        .HasColumnType("INTEGER");
-
                     b.Property<int>("PagoId")
                         .HasColumnType("INTEGER");
+
+                    b.Property<decimal>("Total")
+                        .HasColumnType("TEXT");
 
                     b.HasKey("PagosDetalleId");
 
@@ -312,9 +282,6 @@ namespace Sistema.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Password")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Rol")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("UserName")

@@ -13,8 +13,7 @@ namespace Sistema.Entidades
             UsuarioId = 0;
             ClienteId = 0;
             Fecha = DateTime.Now;
-            TipoPago = string.Empty;
-            TotalPago = 0;
+            Total = 0;
             PagosDetalles = new List<PagosDetalle>();
         }
         [Key]
@@ -22,8 +21,7 @@ namespace Sistema.Entidades
         public int UsuarioId { get; set; }
         public int ClienteId { get; set; }
         public DateTime Fecha { get; set; }
-        public string TipoPago { get; set; }
-        public decimal TotalPago { get; set; }
+        public decimal Total { get; set; }
         
         [ForeignKey("PagoId")]
         public virtual List<PagosDetalle> PagosDetalles { get; set; }

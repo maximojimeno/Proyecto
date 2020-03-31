@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Sistema.Migrations
 {
-    public partial class Initial : Migration
+    public partial class Inicial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -15,7 +15,6 @@ namespace Sistema.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     Nombres = table.Column<string>(nullable: true),
                     Apellidos = table.Column<string>(nullable: true),
-                    Rol = table.Column<string>(nullable: true),
                     UserName = table.Column<string>(nullable: true),
                     Password = table.Column<string>(nullable: true)
                 },
@@ -31,7 +30,6 @@ namespace Sistema.Migrations
                     ArticuloId = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     UsuarioId = table.Column<int>(nullable: false),
-                    Codigo = table.Column<string>(nullable: true),
                     Descripcion = table.Column<string>(nullable: true),
                     Costo = table.Column<decimal>(nullable: false),
                     Impuesto = table.Column<double>(nullable: true),
@@ -59,7 +57,6 @@ namespace Sistema.Migrations
                     Nombres = table.Column<string>(nullable: true),
                     Apellidos = table.Column<string>(nullable: true),
                     Cedula = table.Column<string>(nullable: true),
-                    Balance = table.Column<int>(nullable: false),
                     Correo = table.Column<string>(nullable: true),
                     Telefono = table.Column<string>(nullable: true),
                     Celular = table.Column<string>(nullable: true),
@@ -85,9 +82,8 @@ namespace Sistema.Migrations
                     UsuarioId = table.Column<int>(nullable: false),
                     ClienteId = table.Column<int>(nullable: false),
                     Fecha = table.Column<DateTime>(nullable: false),
-                    NumeroCotizacion = table.Column<int>(nullable: false),
                     Descuento = table.Column<decimal>(nullable: true),
-                    ImpuestoTotal = table.Column<double>(nullable: true),
+                    Impuesto = table.Column<double>(nullable: true),
                     Total = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -115,12 +111,12 @@ namespace Sistema.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     UsuarioId = table.Column<int>(nullable: false),
                     ClienteId = table.Column<int>(nullable: false),
-                    NumeroFactura = table.Column<int>(nullable: false),
                     Fecha = table.Column<DateTime>(nullable: false),
                     FechaVencimiento = table.Column<DateTime>(nullable: false),
                     Descuento = table.Column<decimal>(nullable: true),
-                    ImpuestoTotal = table.Column<double>(nullable: true),
-                    Total = table.Column<decimal>(nullable: false)
+                    Impuesto = table.Column<double>(nullable: true),
+                    Total = table.Column<decimal>(nullable: false),
+                    Balance = table.Column<decimal>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -148,8 +144,7 @@ namespace Sistema.Migrations
                     UsuarioId = table.Column<int>(nullable: false),
                     ClienteId = table.Column<int>(nullable: false),
                     Fecha = table.Column<DateTime>(nullable: false),
-                    TipoPago = table.Column<string>(nullable: true),
-                    TotalPago = table.Column<decimal>(nullable: false)
+                    Total = table.Column<decimal>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -176,9 +171,6 @@ namespace Sistema.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     CotizacionId = table.Column<int>(nullable: false),
                     ArticuloId = table.Column<int>(nullable: false),
-                    Codigo = table.Column<string>(nullable: true),
-                    Descripcion = table.Column<string>(nullable: true),
-                    Costo = table.Column<decimal>(nullable: false),
                     Impuesto = table.Column<double>(nullable: true),
                     Precio = table.Column<decimal>(nullable: false),
                     Cantidad = table.Column<int>(nullable: false)
@@ -208,8 +200,6 @@ namespace Sistema.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     FacturaId = table.Column<int>(nullable: false),
                     ArticuloId = table.Column<int>(nullable: false),
-                    Codigo = table.Column<string>(nullable: true),
-                    Descripcion = table.Column<string>(nullable: true),
                     Impuesto = table.Column<double>(nullable: true),
                     Precio = table.Column<decimal>(nullable: false),
                     Cantidad = table.Column<int>(nullable: false)
@@ -239,8 +229,7 @@ namespace Sistema.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     PagoId = table.Column<int>(nullable: false),
                     FacturaId = table.Column<int>(nullable: false),
-                    NumeroFactura = table.Column<int>(nullable: false),
-                    Monto = table.Column<decimal>(nullable: false)
+                    Total = table.Column<decimal>(nullable: false)
                 },
                 constraints: table =>
                 {

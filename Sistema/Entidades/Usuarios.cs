@@ -12,7 +12,6 @@ namespace Sistema.Entidades
             UsuarioId = 0;
             Nombres = string.Empty;
             Apellidos = string.Empty;
-            Rol = string.Empty;
             UserName = string.Empty;
             Password = string.Empty;
 
@@ -21,14 +20,16 @@ namespace Sistema.Entidades
             Cotizaciones = new List<Cotizaciones>();
             Facturas = new List<Facturas>();
             Pagos = new List<Pagos>();
+
         }
         [Key]
         public int UsuarioId { get; set; }
         public string Nombres { get; set; }
         public string Apellidos { get; set; }
-        public string Rol { get; set; }
         public string UserName { get; set; }
         public string Password { get; set; }
+
+
 
         [ForeignKey("UsuarioId")]
         public virtual List<Articulos> Articulos { get; set; }
@@ -40,5 +41,6 @@ namespace Sistema.Entidades
         public virtual List<Facturas> Facturas { get; set; }
         [ForeignKey("UsuarioId")]
         public virtual List<Pagos> Pagos { get; set; }
+
     }
 }

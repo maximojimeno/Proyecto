@@ -11,8 +11,6 @@ namespace Sistema.Entidades
             FacturasDetalleId = 0;
             FacturaId = 0;
             ArticuloId = 0;
-            Codigo = string.Empty;
-            Descripcion = string.Empty;
             Impuesto = 0;
             Precio = 0;
             Cantidad = 0;
@@ -21,8 +19,6 @@ namespace Sistema.Entidades
         public int FacturasDetalleId { get; set; }
         public int FacturaId { get; set; }
         public int ArticuloId { get; set; }
-        public string Codigo { get; set; }
-        public string Descripcion { get; set; }
         public double? Impuesto { get; set; }
         public decimal Precio { get; set; }
         public int Cantidad { get; set; }
