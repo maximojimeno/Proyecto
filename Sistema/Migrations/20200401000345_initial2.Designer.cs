@@ -9,8 +9,8 @@ using Sistema.Data;
 namespace Sistema.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20200331044254_Inicial")]
-    partial class Inicial
+    [Migration("20200401000345_initial2")]
+    partial class initial2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

@@ -43,19 +43,19 @@
             <Button
     Style="{StaticResource MaterialDesignRaisedDarkButton}"
     Width="100"
-    ToolTip="Resource name: MaterialDesignRaisedLightDarkButton">
+    ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" Click="Button2_Click">
                 menu2
             </Button>
             <Button
     Style="{StaticResource MaterialDesignRaisedDarkButton}"
     Width="100"
-    ToolTip="Resource name: MaterialDesignRaisedLightDarkButton">
+    ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" Click="Button_Click_1">
                 menu3
             </Button>
             <Button
     Style="{StaticResource MaterialDesignRaisedDarkButton}"
     Width="100"
-    ToolTip="Resource name: MaterialDesignRaisedLightDarkButton">
+    ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" Click="Button_Click_2">
                 menu4
             </Button>
             <Button

@@ -26,7 +26,7 @@ namespace Sistema.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.EnableSensitiveDataLogging().UseSqlite(@"Data Source = Data/DataBase.db");
+            optionsBuilder.EnableSensitiveDataLogging().UseSqlite(@"Data Source = Data/DataBase3.db");
         }
   
     }

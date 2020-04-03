@@ -16,27 +16,31 @@
         <TextBlock Grid.Row="1" Text="Registro De Usuario" HorizontalAlignment="Center" FontSize="35" VerticalAlignment="Center"/>
         <Grid Grid.Row="2" Margin="170,38,130,32">
             <materialDesign:PackIcon Kind="IdentificationCard" Margin="87,65,0,0"/>
-            <TextBox x:Name="UsuarioIdTb" HorizontalAlignment="Left" Margin="127,43,0,0" materialDesign:HintAssist.IsFloating="True" materialDesign:HintAssist.Hint="ID" TextWrapping="Wrap" VerticalAlignment="Top" Width="315" Height="38">
+            <TextBox x:Name="usuarioIdTextBox" HorizontalAlignment="Left" Margin="127,43,0,0" materialDesign:HintAssist.IsFloating="True" materialDesign:HintAssist.Hint="ID" TextWrapping="Wrap" VerticalAlignment="Top" Width="315" Height="38">
                 <TextBox.Text>
-                    <Binding Path="UsuarioId" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged"></Binding>
+                    <Binding Path="UsuarioId" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                        <Binding.ValidationRules>
+                            <ExceptionValidationRule/>
+                        </Binding.ValidationRules>
+                    </Binding>
                 </TextBox.Text>
             </TextBox>
-            <TextBox x:Name="NombresTb" HorizontalAlignment="Left" Margin="127,96,0,0" materialDesign:HintAssist.IsFloating="True" materialDesign:HintAssist.Hint="Nombres" TextWrapping="Wrap" VerticalAlignment="Top" Width="315" Height="41">
+            <TextBox x:Name="nombreTextBox" HorizontalAlignment="Left" Margin="127,96,0,0" materialDesign:HintAssist.IsFloating="True" materialDesign:HintAssist.Hint="Nombres" TextWrapping="Wrap" VerticalAlignment="Top" Width="315" Height="41">
                 <TextBox.Text>
                     <Binding Path="Nombres" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged"></Binding>
                 </TextBox.Text>
             </TextBox>
-            <TextBox x:Name="ApellidosTb" HorizontalAlignment="Left" Margin="127,162,0,0" materialDesign:HintAssist.IsFloating="True" materialDesign:HintAssist.Hint="Apellidos" VerticalAlignment="Top" Width="315" Height="41">
+            <TextBox x:Name="apellidoTextBox" HorizontalAlignment="Left" Margin="127,162,0,0" materialDesign:HintAssist.IsFloating="True" materialDesign:HintAssist.Hint="Apellidos" VerticalAlignment="Top" Width="315" Height="41">
                 <TextBox.Text>
                     <Binding Path="Apellidos" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged"></Binding>
                 </TextBox.Text>
             </TextBox>
-            <TextBox x:Name="UserNameTb" HorizontalAlignment="Left" Margin="127,222,0,0" materialDesign:HintAssist.IsFloating="True" materialDesign:HintAssist.Hint="Nombre de Usuario" TextWrapping="Wrap" VerticalAlignment="Top" Width="315" Height="41">
+            <TextBox x:Name="usuarioTextBox" HorizontalAlignment="Left" Margin="127,222,0,0" materialDesign:HintAssist.IsFloating="True" materialDesign:HintAssist.Hint="Nombre de Usuario" TextWrapping="Wrap" VerticalAlignment="Top" Width="315" Height="41">
                 <TextBox.Text>
                     <Binding Path="UserName" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged"></Binding>
                 </TextBox.Text>
             </TextBox>
-            <PasswordBox x:Name="PassTb" HorizontalAlignment="Left" Margin="127,287,0,87" materialDesign:HintAssist.IsFloating="True" materialDesign:HintAssist.Hint="Contraseña" Width="315" PasswordHelper:PasswordHelper.Attach="True" PasswordHelper:PasswordHelper.Password="{Binding Password, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}"/>
+            <PasswordBox x:Name="passwordTextBox" HorizontalAlignment="Left" Margin="127,287,0,87" materialDesign:HintAssist.IsFloating="True" materialDesign:HintAssist.Hint="Contraseña" Width="315" PasswordHelper:PasswordHelper.Attach="True" PasswordHelper:PasswordHelper.Password="{Binding Password, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}"/>
             <materialDesign:PackIcon Kind="PersonCardDetailsOutline" Margin="87,121,0,0"/>
             <materialDesign:PackIcon Kind="PersonCardDetailsOutline" Margin="87,182,0,0"/>
             <materialDesign:PackIcon Kind="Person" Margin="87,245,0,0" Height="18"/>
@@ -50,7 +54,7 @@
             <Button Content="Limpiar" HorizontalAlignment="Center" Margin="0,55,0,0" Grid.Row="3" VerticalAlignment="Top" Background="#FF4D4D4D" Style="{StaticResource MaterialDesignRaisedButton}" Width="108" ToolTip="Resource name: MaterialDesignRaisedButton" Click="LimpiarBtn"/>
             <Button Content="Eliminar" HorizontalAlignment="Left" Margin="579,55,0,0" Grid.Row="3" VerticalAlignment="Top" Background="#FF4D4D4D" Style="{StaticResource MaterialDesignRaisedButton}" Width="98" ToolTip="Resource name: MaterialDesignRaisedButton" Click="EliminarBtn"/>
             <materialDesign:PackIcon Kind="Cleaning" Margin="504,52,0,0" Height="38" Width="33"/>
-            <materialDesign:PackIcon Kind="ContentSaveEdit" Margin="682,52,0,0" Height="38" Width="33"/>
+            <materialDesign:PackIcon Kind="DeleteForeverOutline" Margin="682,52,0,0" Height="38" Width="33"/>
         </Grid>
     </Grid>
 </Window>

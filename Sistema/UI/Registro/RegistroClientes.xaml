@@ -1,0 +1,114 @@
+﻿<Window x:Class="Sistema.UI.Registro.RegistroClientes" TextElement.Foreground="{DynamicResource MaterialDesignBody}" Background="{DynamicResource MaterialDesignPaper}" TextElement.FontWeight="Medium" TextElement.FontSize="14" FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:PasswordHelper="clr-namespace:Sistema.UI.Res" xmlns:local="clr-namespace:Sistema.UI.Registro" mc:Ignorable="d" Height="750" Width="900" WindowStyle="None" AllowsTransparency="True" WindowStartupLocation="CenterScreen">
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="53*"/>
+            <RowDefinition Height="531*"/>
+            <RowDefinition Height="120*"/>
+        </Grid.RowDefinitions>
+        <materialDesign:ColorZone Mode="Dark" Height="30" VerticalAlignment="Center">
+            <StackPanel HorizontalAlignment="Right">
+                <Button Width="30" Height="30" materialDesign:ShadowAssist.ShadowDepth="Depth3" Padding="0" Click="CloseWinBtn" Background="#FFFF0A0A">
+                    <materialDesign:PackIcon Kind="WindowClose"/>
+                </Button>
+            </StackPanel>
+        </materialDesign:ColorZone>
+        <TextBlock Grid.Row="1" Text="Registro De Usuario" HorizontalAlignment="Left" FontSize="35" VerticalAlignment="Center" Width="452" Margin="282,0,0,0" Height="42"/>
+        <Grid Grid.Row="2" Margin="170,10,130,10">
+            <materialDesign:PackIcon Kind="IdentificationCard" Margin="87,40,0,0"/>
+            <TextBox x:Name="clienteIdtextBox" HorizontalAlignment="Left" Margin="127,19,0,0" materialDesign:HintAssist.IsFloating="True" materialDesign:HintAssist.Hint="ID" TextWrapping="Wrap" VerticalAlignment="Top" Width="315" Height="38">
+                <TextBox.Text>
+                    <Binding Path="ClienteId" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                        <Binding.ValidationRules>
+                            <ExceptionValidationRule/>
+                        </Binding.ValidationRules></Binding>
+                </TextBox.Text>
+            </TextBox>
+            <TextBox x:Name="nombresTextBox" HorizontalAlignment="Left" Margin="127,77,0,0" materialDesign:HintAssist.IsFloating="True" materialDesign:HintAssist.Hint="Nombres" TextWrapping="Wrap" VerticalAlignment="Top" Width="315" Height="41">
+                <TextBox.Text>
+                    <Binding Path="Nombres" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                        <Binding.ValidationRules>
+                            <ExceptionValidationRule/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            <TextBox x:Name="apellidosTextBox" HorizontalAlignment="Left" Margin="127,138,0,0" materialDesign:HintAssist.IsFloating="True" materialDesign:HintAssist.Hint="Apellidos" VerticalAlignment="Top" Width="315" Height="41">
+                <TextBox.Text>
+                    <Binding Path="Apellidos" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                        <Binding.ValidationRules>
+                            <ExceptionValidationRule/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            <TextBox x:Name="cedulaTextBox" HorizontalAlignment="Left" Margin="127,204,0,0" materialDesign:HintAssist.IsFloating="True" materialDesign:HintAssist.Hint="Cedula" TextWrapping="Wrap" VerticalAlignment="Top" Width="315" Height="41">
+                <TextBox.Text>
+                    <Binding Path="Cedula" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                        <Binding.ValidationRules>
+                            <ExceptionValidationRule/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            <materialDesign:PackIcon Kind="PersonCardDetailsOutline" Margin="87,102,0,0"/>
+            <materialDesign:PackIcon Kind="PersonCardDetailsOutline" Margin="87,163,0,0"/>
+            <Button Content="Buscar" HorizontalAlignment="Left" Margin="447,49,0,0" VerticalAlignment="Top" Background="#FF4D4D4D" Style="{StaticResource MaterialDesignRaisedButton}" Width="80" ToolTip="Resource name: MaterialDesignRaisedButton" Click="BuscarBtn"/>
+            <materialDesign:PackIcon Kind="UserSearch" Margin="527,43,0,0" Height="39" Width="34"/>
+
+            <TextBox x:Name="correoTextBox" HorizontalAlignment="Left" Margin="127,265,0,0" materialDesign:HintAssist.IsFloating="True" materialDesign:HintAssist.Hint="Correo Electronico" TextWrapping="Wrap" VerticalAlignment="Top" Width="315" Height="41">
+                <TextBox.Text>
+                    <Binding Path="Correo" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                        <Binding.ValidationRules>
+                            <ExceptionValidationRule/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+
+            <TextBox x:Name="telefonoTextBox" HorizontalAlignment="Left" Margin="127,329,0,0" materialDesign:HintAssist.IsFloating="True" materialDesign:HintAssist.Hint="Telefono" TextWrapping="Wrap" VerticalAlignment="Top" Width="315" Height="41">
+                <TextBox.Text>
+                    <Binding Path="Telefono" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                        <Binding.ValidationRules>
+                            <ExceptionValidationRule/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            <TextBox x:Name="celularTextBox" HorizontalAlignment="Left" Margin="127,386,0,0" materialDesign:HintAssist.IsFloating="True" materialDesign:HintAssist.Hint="Telefono Celular" TextWrapping="Wrap" VerticalAlignment="Top" Width="315" Height="41">
+                <TextBox.Text>
+                    <Binding Path="Celular" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                        <Binding.ValidationRules>
+                            <ExceptionValidationRule/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            <TextBox x:Name="direccionTextBox" HorizontalAlignment="Left" Margin="127,444,0,0" materialDesign:HintAssist.IsFloating="True" materialDesign:HintAssist.Hint="Direccion" TextWrapping="Wrap" VerticalAlignment="Top" Width="315" Height="45">
+                <TextBox.Text>
+                    <Binding Path="Direccion" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                        <Binding.ValidationRules>
+                            <ExceptionValidationRule/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            
+            
+            
+            <materialDesign:PackIcon Kind="IdentificationCard" Margin="87,229,0,0"/>
+            <materialDesign:PackIcon Kind="AlternateEmail" Margin="87,290,0,0"/>
+            <materialDesign:PackIcon Kind="TelephoneInTalkOutline" Margin="87,354,0,0"/>
+            <materialDesign:PackIcon Kind="TelephoneInTalkOutline" Margin="87,411,0,0"/>
+            <materialDesign:PackIcon Kind="Home" Margin="87,473,0,0"/>
+        </Grid>
+        <Grid Grid.Row="3" Height="120" VerticalAlignment="Center">
+            <materialDesign:PackIcon Kind="ContentSaveEdit" Margin="322,52,0,0" Height="38" Width="33"/>
+            <Button Content="Guardar" HorizontalAlignment="Left" Margin="214,55,0,0" Grid.Row="3" VerticalAlignment="Top" Background="#FF4D4D4D" Style="{StaticResource MaterialDesignRaisedButton}" Width="103" ToolTip="Resource name: MaterialDesignRaisedButton" Click="GuardarBtn"/>
+            <Button Content="Limpiar" HorizontalAlignment="Center" Margin="0,55,0,0" Grid.Row="3" VerticalAlignment="Top" Background="#FF4D4D4D" Style="{StaticResource MaterialDesignRaisedButton}" Width="108" ToolTip="Resource name: MaterialDesignRaisedButton" Click="LimpiarBtn"/>
+            <Button Content="Eliminar" HorizontalAlignment="Left" Margin="579,55,0,0" Grid.Row="3" VerticalAlignment="Top" Background="#FF4D4D4D" Style="{StaticResource MaterialDesignRaisedButton}" Width="98" ToolTip="Resource name: MaterialDesignRaisedButton" Click="EliminarBtn"/>
+            <materialDesign:PackIcon Kind="Cleaning" Margin="504,52,0,0" Height="38" Width="33"/>
+            <materialDesign:PackIcon Kind="DeleteForeverOutline" Margin="682,52,0,0" Height="38" Width="33"/>
+        </Grid>
+    </Grid>
+</Window>

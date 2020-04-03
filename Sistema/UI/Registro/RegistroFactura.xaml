@@ -2,9 +2,9 @@
     <Grid Background="White">
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
-            <RowDefinition Height="40*"/>
-            <RowDefinition Height="250*"/>
-            <RowDefinition Height="70*"/>
+            <RowDefinition Height="43*"/>
+            <RowDefinition Height="524*"/>
+            <RowDefinition Height="137*"/>
         </Grid.RowDefinitions>
         <materialDesign:ColorZone Mode="Dark" Height="30" VerticalAlignment="Center">
             <StackPanel HorizontalAlignment="Right">
@@ -13,33 +13,58 @@
                 </Button>
             </StackPanel>
         </materialDesign:ColorZone>
-        <TextBlock Grid.Row="1" Text="Factura" HorizontalAlignment="Center" FontSize="35" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="1" Text="Factura" HorizontalAlignment="Center" FontSize="35" VerticalAlignment="Center" Height="42" Width="148"/>
         <Grid Grid.Row="2" Margin="10,10,10,0">
             <materialDesign:PackIcon Kind="IdentificationCard" Margin="10,32,0,0"/>
-            <TextBox x:Name="facturaIdTB" HorizontalAlignment="Left" Margin="36,9,0,0" materialDesign:HintAssist.IsFloating="True" materialDesign:HintAssist.Hint="Numero de Factura" TextWrapping="Wrap" VerticalAlignment="Top" Width="118" Height="45">
+            <TextBox x:Name="facturaIdTextBox" HorizontalAlignment="Left" Margin="36,9,0,0" materialDesign:HintAssist.IsFloating="True" materialDesign:HintAssist.Hint="Numero de Factura" TextWrapping="Wrap" VerticalAlignment="Top" Width="118" Height="45">
                 <TextBox.Text>
                     <Binding Path="FacturaId" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged"></Binding>
                 </TextBox.Text>
             </TextBox>
-            <ComboBox HorizontalAlignment="Left" Name="clienteIdComboBox" Margin="36,88,0,0" materialDesign:HintAssist.Hint="Cliente" IsEditable="True" VerticalAlignment="Top" Width="214" Height="44" ItemsSource="{Binding}" SelectedValue="ClienteId" DisplayMemberPath="Nombres">
-                <ComboBox.SelectedItem>
-                    <Binding Source="ClienteId" Path="Nombres" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged"/>
-                </ComboBox.SelectedItem>
+
+            <ComboBox HorizontalAlignment="Left"
+                      Name="clienteComboBox"
+                      Margin="36,88,0,0"
+                      materialDesign:HintAssist.Hint="Cliente"
+                      IsEditable="True" VerticalAlignment="Top" Width="156"
+                      Height="44">
             </ComboBox>
+
+
             <Button Content="Buscar" HorizontalAlignment="Left" Margin="168,22,0,0" VerticalAlignment="Top" Background="#FF4D4D4D" Style="{StaticResource MaterialDesignRaisedButton}" Width="82" ToolTip="Resource name: MaterialDesignRaisedButton" Click="BuscarBtn"/>
-            <DatePicker Name="fechaDataPicker" HorizontalAlignment="Left" Margin="284,20,0,0" VerticalAlignment="Top" Width="149" materialDesign:HintAssist.Hint="Fecha" Style="{StaticResource MaterialDesignFloatingHintDatePicker}"/>
-            <DatePicker Name="fechaVencimientoDatePicker" HorizontalAlignment="Left" Margin="494,20,0,0" VerticalAlignment="Top" Width="141" materialDesign:HintAssist.Hint="Fecha de Vencimineto" Style="{StaticResource MaterialDesignFloatingHintDatePicker}">
-                <DatePicker.SelectedDate>
-                    <Binding Path="FechaVencimiento" UpdateSourceTrigger="PropertyChanged"></Binding>
-                </DatePicker.SelectedDate>
+            <DatePicker Name="fechaDataPicker" HorizontalAlignment="Left" Margin="716,13,0,0" VerticalAlignment="Top" Width="149" materialDesign:HintAssist.Hint="Fecha" Style="{StaticResource MaterialDesignFloatingHintDatePicker}">
+                <!--<DatePicker.SelectedDate>
+                    <Binding Path="FechaVencimiento" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged"></Binding>
+                </DatePicker.SelectedDate>-->
             </DatePicker>
-            <DataGrid Margin="10,188,280,74" CanUserSortColumns="True" CanUserAddRows="False" materialDesign:DataGridAssist.CellPadding="4 2 2 2" materialDesign:DataGridAssist.ColumnHeaderPadding="4 2 2 2"/>
-            <ComboBox HorizontalAlignment="Left" Name="ArticuloIdComboBox" Margin="350,93,0,0" materialDesign:HintAssist.Hint="Articulos" IsEditable="True" VerticalAlignment="Top" Width="214" Height="44" ItemsSource="{Binding}" SelectedValue="ArticuloId" DisplayMemberPath="Descripcion"></ComboBox>
-            <Button Content="Remover" HorizontalAlignment="Left" Margin="18,422,0,0" VerticalAlignment="Top" Background="#FF4D4D4D" Style="{StaticResource MaterialDesignRaisedButton}" Width="103" ToolTip="Resource name: MaterialDesignRaisedButton" Click="RemoverBtn"/>
-            <Button Content="Agregar" HorizontalAlignment="Left" Margin="629,110,0,0" VerticalAlignment="Top" Background="#FF4D4D4D" Style="{StaticResource MaterialDesignRaisedButton}" Width="103" ToolTip="Resource name: MaterialDesignRaisedButton" Click="AgregarBtn"/>
+            <DatePicker Name="fechaVencimientoDatePicker" HorizontalAlignment="Left" Margin="716,56,0,0" VerticalAlignment="Top" Width="149" materialDesign:HintAssist.Hint="Fecha de Vencimineto" Style="{StaticResource MaterialDesignFloatingHintDatePicker}">
+                <!--<DatePicker.SelectedDate>
+                    <Binding Path="FechaVencimiento" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged"></Binding>
+                </DatePicker.SelectedDate>-->
+            </DatePicker>
+            <DataGrid Margin="10,257,335,74"
+                      Name="articuloDataGrid"
+                    
+                      materialDesign:DataGridAssist.CellPadding="4 2 2 2"
+                      materialDesign:DataGridAssist.ColumnHeaderPadding="4 2 2 2">
+                
+            </DataGrid>
+
+
+
+            <ComboBox HorizontalAlignment="Left"
+                      Name="articuloComboBox" 
+                      Margin="36,169,0,0"
+                      materialDesign:HintAssist.Hint="Articulos"
+                      IsEditable="True" VerticalAlignment="Top"
+                      Width="254" Height="44">
+            </ComboBox>
+            <Button Content="Remover" HorizontalAlignment="Left" Margin="36,455,0,0" VerticalAlignment="Top" Background="#FF4D4D4D" Style="{StaticResource MaterialDesignRaisedButton}" Width="103" ToolTip="Resource name: MaterialDesignRaisedButton" Click="RemoverBtn"/>
+            <Button Content="Agregar" HorizontalAlignment="Left" Margin="528,190,0,0" VerticalAlignment="Top" Background="#FF4D4D4D" Style="{StaticResource MaterialDesignRaisedButton}" Width="103" ToolTip="Resource name: MaterialDesignRaisedButton" Click="AgregarBtn"/>
+            <TextBox HorizontalAlignment="Left" Name="CantidadTextBox" Margin="339,178,0,0" materialDesign:HintAssist.IsFloating="True" materialDesign:HintAssist.Hint="Canditad" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         </Grid>
-        <Button Content="Guardar" HorizontalAlignment="Left" Margin="214,55,0,0" Grid.Row="3" VerticalAlignment="Top" Background="#FF4D4D4D" Style="{StaticResource MaterialDesignRaisedButton}" Width="103" ToolTip="Resource name: MaterialDesignRaisedButton" Click="GuardarBtn"/>
-        <Button Content="Limpiar" HorizontalAlignment="Center" Margin="0,55,0,0" Grid.Row="3" VerticalAlignment="Top" Background="#FF4D4D4D" Style="{StaticResource MaterialDesignRaisedButton}" Width="108" ToolTip="Resource name: MaterialDesignRaisedButton" Click="LimpiarBtn"/>
-        <Button Content="Eliminar" HorizontalAlignment="Left" Margin="579,55,0,0" Grid.Row="3" VerticalAlignment="Top" Background="#FF4D4D4D" Style="{StaticResource MaterialDesignRaisedButton}" Width="98" ToolTip="Resource name: MaterialDesignRaisedButton" Click="EliminarBtn"/>
+        <Button Content="Guardar" HorizontalAlignment="Left" Margin="214,55,0,0" Grid.Row="3" VerticalAlignment="Top" Background="#FF4D4D4D" Style="{StaticResource MaterialDesignRaisedButton}" Width="103" ToolTip="Resource name: MaterialDesignRaisedButton" Click="GuardarBtn" Height="32"/>
+        <Button Content="Limpiar" HorizontalAlignment="Center" Margin="0,55,0,0" Grid.Row="3" VerticalAlignment="Top" Background="#FF4D4D4D" Style="{StaticResource MaterialDesignRaisedButton}" Width="108" ToolTip="Resource name: MaterialDesignRaisedButton" Click="LimpiarBtn" Height="32"/>
+        <Button Content="Eliminar" HorizontalAlignment="Left" Margin="579,55,0,0" Grid.Row="3" VerticalAlignment="Top" Background="#FF4D4D4D" Style="{StaticResource MaterialDesignRaisedButton}" Width="98" ToolTip="Resource name: MaterialDesignRaisedButton" Click="EliminarBtn" Height="32"/>
     </Grid>
 </Window>

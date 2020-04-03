@@ -22,24 +22,35 @@ namespace Sistema.UI.Registro
 
 
         Facturas facturas = new Facturas();
-        Articulos articulos = new Articulos();
+
+        public List<FacturasDetalle> facturasDetalles { get; set; }
+
         public RegistroFactura()
         {
             InitializeComponent();
+            this.facturasDetalles = new List<FacturasDetalle>();
             this.DataContext = facturas;
-            facturaIdTB.Text = "0";
+            facturaIdTextBox.Text = "0";
+            facturas.UsuarioId = 2;
+            facturas.ClienteId = 2;
             Lista();
             Limpiar();
         }
 
         private void Lista()
         {
-            List<Articulos> listaArticulo = ArticuloBLL.GetList(a => true);
-            this.DataContext = listaArticulo;
             List<Clientes> listaCliente = ClientesBLL.GetList(c => true);
-            this.DataContext = listaArticulo;
+            clienteComboBox.ItemsSource = listaCliente;
+            clienteComboBox.SelectedValue = "ClienteId";
+            clienteComboBox.DisplayMemberPath = "Nombres";
+
+            List<Articulos> listaArticulo = ArticuloBLL.GetList(c => true);
+            articuloComboBox.ItemsSource = listaArticulo;
+            articuloComboBox.SelectedValue = "ArticuloId";
+            articuloComboBox.DisplayMemberPath = "Descripcion";
         }
 
+        
        
 
         private void CloseWinBtn(object sender, RoutedEventArgs e)
@@ -49,20 +60,20 @@ namespace Sistema.UI.Registro
 
         private void Limpiar()
         {
-            facturaIdTB.Text = "0";
+            facturaIdTextBox.Text = "0";
             fechaDataPicker.SelectedDate = DateTime.Now;
             fechaVencimientoDatePicker.SelectedDate = DateTime.Now.AddDays(30);
-            clienteIdComboBox.Text = string.Empty;
-            ArticuloIdComboBox.Text = string.Empty;
-
+            clienteComboBox.Text = string.Empty;
+            articuloComboBox.Text = string.Empty;
+            CantidadTextBox.Text = string.Empty;
 
         }
 
         private void Actualizar()
         {
-            this.DataContext = null;
+            this.articuloDataGrid.ItemsSource = null;
+            articuloDataGrid.ItemsSource = this.facturasDetalles;
             this.DataContext = facturas;
-            this.DataContext = articulos;
         }
 
 
@@ -70,38 +81,38 @@ namespace Sistema.UI.Registro
        {
             bool paso = true;
 
-            if (string.IsNullOrEmpty(facturaIdTB.Text))
+            if (string.IsNullOrEmpty(facturaIdTextBox.Text))
              {
                 paso = false;
                 MessageBox.Show("El campo ID no puede estar vacio Favor colocar 0", "Informacion", MessageBoxButton.OK, MessageBoxImage.Information);
-                facturaIdTB.Focus();
+                facturaIdTextBox.Focus();
 
              }
             if (fechaDataPicker.SelectedDate == null)
             {
                 paso = false;
                 MessageBox.Show("El campo Fecha no puede estar vacio", "Informacion", MessageBoxButton.OK, MessageBoxImage.Information);
-                facturaIdTB.Focus();
+                facturaIdTextBox.Focus();
             }
             if (fechaVencimientoDatePicker.SelectedDate == null)
             {
                 paso = false;
                 MessageBox.Show("El campo Fecha Vencimiento no puede estar vacio", "Informacion", MessageBoxButton.OK, MessageBoxImage.Information);
-                facturaIdTB.Focus();
+                facturaIdTextBox.Focus();
             }
 
-            if (clienteIdComboBox.SelectedItem == null)
+            if (clienteComboBox.SelectedItem == null)
                     {
                         paso = false;
                         MessageBox.Show("El campo Cliente no puede estar vacio", "Informacion", MessageBoxButton.OK, MessageBoxImage.Information);
-                        clienteIdComboBox.Focus();
+                        clienteComboBox.Focus();
                     }
-            if (ArticuloIdComboBox.SelectedItem == null)
+            if (articuloComboBox.SelectedItem == null)
             {
                 {
                     paso = false;
                     MessageBox.Show("El campo Producto no puede estar vacio", "Informacion", MessageBoxButton.OK, MessageBoxImage.Information);
-                    clienteIdComboBox.Focus();
+                    clienteComboBox.Focus();
                 }
             }
              return paso;
@@ -109,7 +120,7 @@ namespace Sistema.UI.Registro
 
         private bool Existe()
         {
-            Facturas facturas = FacturasBLL.Buscar(Convert.ToInt32(facturaIdTB.Text));
+            Facturas facturas = FacturasBLL.Buscar(Convert.ToInt32(facturaIdTextBox.Text));
             return (facturas != null);
         }
 
@@ -120,7 +131,7 @@ namespace Sistema.UI.Registro
             if (!Validar())
                 return;
 
-            if (String.IsNullOrEmpty(facturaIdTB.Text) || facturaIdTB.Text == "0")
+            if (String.IsNullOrEmpty(facturaIdTextBox.Text) || facturaIdTextBox.Text == "0")
                 paso = FacturasBLL.Guardar(facturas);
             else
             {
@@ -150,12 +161,13 @@ namespace Sistema.UI.Registro
 
 
 
-            Facturas anterior = FacturasBLL.Buscar(int.Parse(ArticuloIdComboBox.Text));
+            Facturas anterior = FacturasBLL.Buscar(int.Parse(facturaIdTextBox.Text));
 
             if (anterior != null)
             {
                 facturas = anterior;
                 Actualizar();
+                Lista();
             }
             else
             {
@@ -171,9 +183,9 @@ namespace Sistema.UI.Registro
         private void EliminarBtn(object sender, RoutedEventArgs e)
         {
             int id;
-            int.TryParse(ArticuloIdComboBox.Text, out id);
+            int.TryParse(facturaIdTextBox.Text, out id);
 
-            if (UsuariosBLL.Eliminar(id))
+            if (FacturasBLL.Eliminar(id))
             {
                 MessageBox.Show("Eliminado con exito!!!", "ELiminado", MessageBoxButton.OK, MessageBoxImage.Information);
                 Limpiar();
@@ -186,7 +198,22 @@ namespace Sistema.UI.Registro
 
         private void AgregarBtn(object sender, RoutedEventArgs e)
         {
+            Articulos articulo = (Articulos)articuloComboBox.SelectedValue;
 
+            if (articuloDataGrid.ItemsSource != null)
+            {
+                this.facturasDetalles = (List<FacturasDetalle>)articuloDataGrid.ItemsSource;
+            }
+
+            this.facturasDetalles.Add(new FacturasDetalle
+            {
+                FacturaId = Convert.ToInt32(facturaIdTextBox.Text),
+                ArticuloId  = articulo.ArticuloId,
+                Precio = articulo.Precio,
+                Cantidad = Convert.ToInt32(CantidadTextBox.Text)
+            });
+
+            Actualizar();
         }
 
         private void RemoverBtn(object sender, RoutedEventArgs e)

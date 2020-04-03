@@ -17,14 +17,15 @@ namespace Sistema.UI.Registro
     /// <summary>
     /// Interaction logic for RegistroBase.xaml
     /// </summary>
-    public partial class RegistroUsuarios : Window
+    public partial class RegistroArticulos : Window
     {
-        Usuarios usuarios = new Usuarios();
-        public RegistroUsuarios()
+        Articulos articulos = new Articulos();
+
+        public RegistroArticulos()
         {
             InitializeComponent();
-            this.DataContext = usuarios;
-            usuarioIdTextBox.Text = "0";
+            this.DataContext = articulos;
+            articuloIdTextBox.Text = "0";
         }
 
         private void CloseWinBtn(object sender, RoutedEventArgs e)
@@ -34,17 +35,18 @@ namespace Sistema.UI.Registro
 
         private void Limpiar()
         {
-            usuarioIdTextBox.Text = "0";
-            nombreTextBox.Text = string.Empty;
-            apellidoTextBox.Text = string.Empty;
-            usuarioIdTextBox.Text = string.Empty;
-            passwordTextBox.Password = string.Empty;
+            articuloIdTextBox.Text = "0";
+            descripcionTextBox.Text = string.Empty;
+            costoTextBox.Text = "0";
+            impuestoTextBox.Text = "0";
+            precioTextBox.Text = "0";
+            canditadTextBox.Text = "0";
         }
 
         private void Actualizar()
         {
             this.DataContext = null;
-            this.DataContext = usuarios;
+            this.DataContext = articulos;
         }
 
 
@@ -52,50 +54,54 @@ namespace Sistema.UI.Registro
         {
             bool paso = true;
 
-            if (string.IsNullOrEmpty(usuarioIdTextBox.Text))
+            if (string.IsNullOrEmpty(articuloIdTextBox.Text))
             {
                 paso = false;
                 MessageBox.Show("El campo ID no puede estar vacio", "Informacion", MessageBoxButton.OK, MessageBoxImage.Information);
-                usuarioIdTextBox.Focus();
+                articuloIdTextBox.Focus();
 
             }
 
-            if (string.IsNullOrEmpty(nombreTextBox.Text))
+            if (string.IsNullOrEmpty(descripcionTextBox.Text))
             {
                 paso = false;
-                MessageBox.Show("El campo Nombres no puede estar vacio", "Informacion", MessageBoxButton.OK, MessageBoxImage.Information);
-                nombreTextBox.Focus();
+                MessageBox.Show("El campo Descripcion no puede estar vacio", "Informacion", MessageBoxButton.OK, MessageBoxImage.Information);
+                descripcionTextBox.Focus();
 
             }
-
-            if (string.IsNullOrEmpty(apellidoTextBox.Text))
+            if (string.IsNullOrEmpty(costoTextBox.Text))
             {
                 paso = false;
-                MessageBox.Show("El campo Nombres no puede estar vacio", "Informacion", MessageBoxButton.OK, MessageBoxImage.Information);
-                apellidoTextBox.Focus();
-
+                MessageBox.Show("El campo Costo no puede estar vacio", "Informacion", MessageBoxButton.OK, MessageBoxImage.Information);
+                costoTextBox.Focus();
             }
 
-            if (string.IsNullOrEmpty(usuarioIdTextBox.Text))
+            if (string.IsNullOrEmpty(impuestoTextBox.Text))
             {
                 paso = false;
-                MessageBox.Show("El campo Nombre de Usuario no puede estar vacio", "Informacion", MessageBoxButton.OK, MessageBoxImage.Information);
-                usuarioIdTextBox.Focus();
+                MessageBox.Show("El campo Impuesto no puede estar vacio", "Informacion", MessageBoxButton.OK, MessageBoxImage.Information);
+                impuestoTextBox.Focus();
+            }
+            if (string.IsNullOrEmpty(precioTextBox.Text))
+            {
+                paso = false;
+                MessageBox.Show("El campo Telefono no puede estar vacio", "Informacion", MessageBoxButton.OK, MessageBoxImage.Information);
+                precioTextBox.Focus();
             }
 
-            if (string.IsNullOrEmpty(passwordTextBox.Password))
+            if (string.IsNullOrEmpty(canditadTextBox.Text))
             {
                 paso = false;
-                MessageBox.Show("El campo Contraseña no puede estar vacio", "Informacion", MessageBoxButton.OK, MessageBoxImage.Information);
-                passwordTextBox.Focus();
+                MessageBox.Show("El campo Celular no puede estar vacio", "Informacion", MessageBoxButton.OK, MessageBoxImage.Information);
+                canditadTextBox.Focus();
             }
             return paso;
         }
 
         private bool Existe()
         {
-            Usuarios usuarios = UsuariosBLL.Buscar(int.Parse(usuarioIdTextBox.Text));
-            return (usuarios != null);
+            Articulos articulos = ArticuloBLL.Buscar(int.Parse(articuloIdTextBox.Text));
+            return (articulos != null);
         }
 
         private void GuardarBtn(object sender, RoutedEventArgs e)
@@ -105,16 +111,16 @@ namespace Sistema.UI.Registro
             if (!Validar())
                 return;
 
-            if (String.IsNullOrEmpty(usuarioIdTextBox.Text) || usuarioIdTextBox.Text == "0")
-                paso = UsuariosBLL.Guardar(usuarios);
+            if (String.IsNullOrEmpty(articuloIdTextBox.Text) || articuloIdTextBox.Text == "0")
+                paso = ArticuloBLL.Guardar(articulos);
             else
             {
                 if (!Existe())
                 {
-                    MessageBox.Show("No existe el El en la Base de datos", "Informacion", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show("No existe en la Base de datos", "Informacion", MessageBoxButton.OK, MessageBoxImage.Information);
                     return;
                 }
-                paso = UsuariosBLL.Modificar(usuarios);
+                paso = ArticuloBLL.Modificar(articulos);
             }
 
             if (paso)
@@ -130,11 +136,11 @@ namespace Sistema.UI.Registro
 
         private void BuscarBtn(object sender, RoutedEventArgs e)
         {
-            Usuarios anterior = UsuariosBLL.Buscar(int.Parse(usuarioIdTextBox.Text));
+            Articulos anterior = ArticuloBLL.Buscar(int.Parse(articuloIdTextBox.Text));
 
             if (anterior != null)
             {
-                usuarios = anterior;
+                articulos = anterior;
                 Actualizar();
             }
             else
@@ -151,7 +157,7 @@ namespace Sistema.UI.Registro
         private void EliminarBtn(object sender, RoutedEventArgs e)
         {
             int id;
-            int.TryParse(usuarioIdTextBox.Text, out id);
+            int.TryParse(articuloIdTextBox.Text, out id);
 
             if (UsuariosBLL.Eliminar(id))
             {

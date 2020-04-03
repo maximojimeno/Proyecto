@@ -39,6 +39,24 @@ namespace Sistema.UI
         {
             RegistroUsuarios registroUsuarios = new RegistroUsuarios();
             registroUsuarios.Show();
-        }   
+        }
+
+        private void Button2_Click(object sender, RoutedEventArgs e)
+        {
+            RegistroFactura registroFactura = new RegistroFactura();
+            registroFactura.Show(); 
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            RegistroClientes registroClientes = new RegistroClientes();
+            registroClientes.Show();
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            RegistroArticulos registroArticulos = new RegistroArticulos();
+            registroArticulos.Show();
+        }
     }
 }
