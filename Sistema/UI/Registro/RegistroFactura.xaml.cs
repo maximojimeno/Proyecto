@@ -11,6 +11,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Sistema.Entidades;
 using Sistema.BLL;
+using System.Linq;
 
 namespace Sistema.UI.Registro
 {
@@ -31,23 +32,39 @@ namespace Sistema.UI.Registro
             this.facturasDetalles = new List<FacturasDetalle>();
             this.DataContext = facturas;
             facturaIdTextBox.Text = "0";
-            facturas.UsuarioId = 2;
-            facturas.ClienteId = 2;
+            facturas.UsuarioId = Sesion.usuarioActual.UsuarioId;
             Lista();
             Limpiar();
         }
 
         private void Lista()
         {
-            List<Clientes> listaCliente = ClientesBLL.GetList(c => true);
-            clienteComboBox.ItemsSource = listaCliente;
+            List<Clientes> dataSource = new List<Clientes>();
+            if (facturas.ClienteId > 0)
+            {
+                dataSource = ClientesBLL.GetList(x=>x.ClienteId == facturas.ClienteId);
+                this.clienteComboBox.IsEnabled = false;
+
+            } else
+            {
+                List<Clientes> listaCliente = ClientesBLL.GetList(c => true);
+                dataSource = listaCliente;
+            }
+
             clienteComboBox.SelectedValue = "ClienteId";
             clienteComboBox.DisplayMemberPath = "Nombres";
+            clienteComboBox.ItemsSource = dataSource;
+            if(dataSource.Count > 0)
+            {
+                clienteComboBox.SelectedIndex = 0;
+                clienteComboBox.UpdateLayout();
+            }
 
-            List<Articulos> listaArticulo = ArticuloBLL.GetList(c => true);
-            articuloComboBox.ItemsSource = listaArticulo;
             articuloComboBox.SelectedValue = "ArticuloId";
             articuloComboBox.DisplayMemberPath = "Descripcion";
+            List<Articulos> listaArticulo = ArticuloBLL.GetList(c => true);
+            articuloComboBox.ItemsSource = listaArticulo;
+            
         }
 
         
@@ -66,6 +83,13 @@ namespace Sistema.UI.Registro
             clienteComboBox.Text = string.Empty;
             articuloComboBox.Text = string.Empty;
             CantidadTextBox.Text = string.Empty;
+            totalLabel.Content = 0;
+            impuestoLabel.Content = 0;
+            subTotalLabel.Content = 0;
+            this.clienteComboBox.IsEnabled = true;
+            this.facturasDetalles = new List<FacturasDetalle>();
+            this.facturas = new Facturas();
+            this.Actualizar();
 
         }
 
@@ -93,6 +117,7 @@ namespace Sistema.UI.Registro
                 paso = false;
                 MessageBox.Show("El campo Fecha no puede estar vacio", "Informacion", MessageBoxButton.OK, MessageBoxImage.Information);
                 facturaIdTextBox.Focus();
+                facturaIdTextBox.Focus();
             }
             if (fechaVencimientoDatePicker.SelectedDate == null)
             {
@@ -107,14 +132,7 @@ namespace Sistema.UI.Registro
                         MessageBox.Show("El campo Cliente no puede estar vacio", "Informacion", MessageBoxButton.OK, MessageBoxImage.Information);
                         clienteComboBox.Focus();
                     }
-            if (articuloComboBox.SelectedItem == null)
-            {
-                {
-                    paso = false;
-                    MessageBox.Show("El campo Producto no puede estar vacio", "Informacion", MessageBoxButton.OK, MessageBoxImage.Information);
-                    clienteComboBox.Focus();
-                }
-            }
+           
              return paso;
             }
 
@@ -127,9 +145,27 @@ namespace Sistema.UI.Registro
         private void GuardarBtn(object sender, RoutedEventArgs e)
         {
             bool paso = false;
+            Clientes cliente = (Clientes)clienteComboBox.SelectedValue;
+            
+            facturas.ClienteId = cliente.ClienteId;
 
             if (!Validar())
                 return;
+
+            this.facturas.FacturasDetalles = this.facturasDetalles;
+
+
+            foreach(var detalle in this.facturas.FacturasDetalles)
+            {
+                Articulos articulo = ArticuloBLL.Buscar(detalle.ArticuloId);
+                articulo.UsuarioId = facturas.UsuarioId;
+                if (articulo.Cantidad > 0)
+                {
+                    articulo.Cantidad -= detalle.Cantidad;
+                }
+                ArticuloBLL.Modificar(articulo);
+                
+            }
 
             if (String.IsNullOrEmpty(facturaIdTextBox.Text) || facturaIdTextBox.Text == "0")
                 paso = FacturasBLL.Guardar(facturas);
@@ -164,10 +200,14 @@ namespace Sistema.UI.Registro
             Facturas anterior = FacturasBLL.Buscar(int.Parse(facturaIdTextBox.Text));
 
             if (anterior != null)
-            {
+            {               
                 facturas = anterior;
+                this.facturasDetalles = anterior.FacturasDetalles;                
                 Actualizar();
                 Lista();
+                Calcular();
+                
+                
             }
             else
             {
@@ -198,6 +238,15 @@ namespace Sistema.UI.Registro
 
         private void AgregarBtn(object sender, RoutedEventArgs e)
         {
+            if (articuloComboBox.SelectedItem == null)
+            {
+                
+                      
+                    MessageBox.Show("El campo Producto no puede estar vacio", "Informacion", MessageBoxButton.OK, MessageBoxImage.Information);
+                    articuloComboBox.Focus();
+                return;
+                
+            }
             Articulos articulo = (Articulos)articuloComboBox.SelectedValue;
 
             if (articuloDataGrid.ItemsSource != null)
@@ -214,6 +263,20 @@ namespace Sistema.UI.Registro
             });
 
             Actualizar();
+            Calcular();
+        }
+
+        private void Calcular()
+        {
+            decimal subTotal = this.facturasDetalles.Select(x => x.Cantidad * x.Precio).Sum();
+            decimal impuestoTotal = (Decimal)this.facturasDetalles.Sum(x => x.Impuesto);
+            decimal total = subTotal + impuestoTotal;
+
+            subTotalLabel.Content = subTotal.ToString();
+            impuestoLabel.Content = impuestoTotal.ToString();
+            totalLabel.Content = total.ToString();
+            
+
         }
 
         private void RemoverBtn(object sender, RoutedEventArgs e)

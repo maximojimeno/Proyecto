@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
+using Sistema.UI;
 
 namespace Sistema.BLL
 {
@@ -14,6 +15,8 @@ namespace Sistema.BLL
         public static bool Guardar(Facturas facturas)
         {
             bool paso = false;
+            facturas.Balance = facturas.Total;
+            facturas.UsuarioId = Sesion.usuarioActual.UsuarioId;
             Contexto db = new Contexto();
             try
             {
@@ -33,11 +36,12 @@ namespace Sistema.BLL
 
         public static bool Modificar(Facturas facturas)
         {
-            bool paso = false;
+            bool paso = false;            
             Contexto db = new Contexto();
 
             try
             {
+                facturas.UsuarioId = Sesion.usuarioActual.UsuarioId;
                 db.Database.ExecuteSqlRaw($"DELETE FROM FacturasDetalle Where FacturaId = {facturas.FacturaId}");
                 foreach (var item in facturas.FacturasDetalles)
                 {
@@ -47,7 +51,7 @@ namespace Sistema.BLL
                 foreach (var item in facturas.PagosDetalles)
                 {
                     db.Entry(item).State = EntityState.Added;
-                }
+                }       
                 db.Entry(facturas).State = EntityState.Modified;
                 paso = (db.SaveChanges() > 0);
             }

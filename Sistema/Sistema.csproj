@@ -31,10 +31,4 @@
     <None Include="..\.editorconfig" Link=".editorconfig" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Page Update="UI\Registro\RegistroArticulos.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-  </ItemGroup>
-
 </Project>
