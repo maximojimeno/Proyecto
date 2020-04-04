@@ -11,6 +11,8 @@ Edward Computadoras, la cual servira para utilizar dicho sistema sin ningun inco
 ___________________________________________________________________________________________________________________________________________
 
 
+
+
 Este es el formulario principal, cuya funcion es iniciar la seccion del usuario que entrara al programa para utilizarlo, el usuario 
 debe completar los datos y seleccionar el boton iniciar para poder seguir al menu del programa
 si no hay usuarios registrado siempre habra un usuario por defecto cuyo nombre sera Admin y la contraseña sera 1234
