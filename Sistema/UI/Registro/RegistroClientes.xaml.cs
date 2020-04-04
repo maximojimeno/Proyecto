@@ -20,7 +20,6 @@ namespace Sistema.UI.Registro
     public partial class RegistroClientes : Window
     {
         Clientes clientes = new Clientes();
-
         public RegistroClientes()
         {
             InitializeComponent();
@@ -50,7 +49,6 @@ namespace Sistema.UI.Registro
             this.DataContext = null;
             this.DataContext = clientes;
         }
-
 
         private bool Validar()
         {
@@ -113,6 +111,7 @@ namespace Sistema.UI.Registro
             Clientes clientes = ClientesBLL.Buscar(int.Parse(clienteIdtextBox.Text));
             return (clientes != null);
         }
+
 
         private void GuardarBtn(object sender, RoutedEventArgs e)
         {

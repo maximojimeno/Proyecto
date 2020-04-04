@@ -13,7 +13,7 @@
                 </Button>
             </StackPanel>
         </materialDesign:ColorZone>
-        <TextBlock Grid.Row="1" Text="Registro De Usuario" HorizontalAlignment="Left" FontSize="35" VerticalAlignment="Center" Width="452" Margin="282,0,0,0" Height="42"/>
+        <TextBlock Grid.Row="1" Text="Registro De Clientes" HorizontalAlignment="Left" FontSize="35" VerticalAlignment="Center" Width="452" Margin="282,0,0,0" Height="42"/>
         <Grid Grid.Row="2" Margin="170,10,130,10">
             <materialDesign:PackIcon Kind="IdentificationCard" Margin="87,40,0,0"/>
             <TextBox x:Name="clienteIdtextBox" HorizontalAlignment="Left" Margin="127,19,0,0" materialDesign:HintAssist.IsFloating="True" materialDesign:HintAssist.Hint="ID" TextWrapping="Wrap" VerticalAlignment="Top" Width="315" Height="38">
@@ -21,7 +21,8 @@
                     <Binding Path="ClienteId" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                         <Binding.ValidationRules>
                             <ExceptionValidationRule/>
-                        </Binding.ValidationRules></Binding>
+                        </Binding.ValidationRules>
+                    </Binding>
                 </TextBox.Text>
             </TextBox>
             <TextBox x:Name="nombresTextBox" HorizontalAlignment="Left" Margin="127,77,0,0" materialDesign:HintAssist.IsFloating="True" materialDesign:HintAssist.Hint="Nombres" TextWrapping="Wrap" VerticalAlignment="Top" Width="315" Height="41">
@@ -93,9 +94,9 @@
                     </Binding>
                 </TextBox.Text>
             </TextBox>
-            
-            
-            
+
+
+
             <materialDesign:PackIcon Kind="IdentificationCard" Margin="87,229,0,0"/>
             <materialDesign:PackIcon Kind="AlternateEmail" Margin="87,290,0,0"/>
             <materialDesign:PackIcon Kind="TelephoneInTalkOutline" Margin="87,354,0,0"/>
