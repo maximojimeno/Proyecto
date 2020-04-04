@@ -18,21 +18,21 @@ namespace Sistema.UI.Registro
     /// <summary>
     /// Interaction logic for RegistroBase.xaml
     /// </summary>
-    public partial class RegistroFactura : Window
+    public partial class RegistroCotizaciones : Window
     {
 
 
-        Facturas facturas = new Facturas();
+        Cotizaciones cotizaciones = new Cotizaciones();
 
-        public List<FacturasDetalle> facturasDetalles { get; set; }
+        public List<CotizacionesDetalle> cotizacionesDetalles { get; set; }
 
-        public RegistroFactura()
+        public RegistroCotizaciones()
         {
             InitializeComponent();
-            this.facturasDetalles = new List<FacturasDetalle>();
-            this.DataContext = facturas;
-            facturaIdTextBox.Text = "0";
-            facturas.UsuarioId = Sesion.usuarioActual.UsuarioId;
+            this.cotizacionesDetalles = new List<CotizacionesDetalle>();
+            this.DataContext = cotizaciones;
+            cotizacionIdTextBox.Text = "0";
+            cotizaciones.UsuarioId = Sesion.usuarioActual.UsuarioId;
             Lista();
             Limpiar();
         }
@@ -40,9 +40,9 @@ namespace Sistema.UI.Registro
         private void Lista()
         {
             List<Clientes> dataSource = new List<Clientes>();
-            if (facturas.ClienteId > 0)
+            if (cotizaciones.ClienteId > 0)
             {
-                dataSource = ClientesBLL.GetList(x=>x.ClienteId == facturas.ClienteId);
+                dataSource = ClientesBLL.GetList(x=>x.ClienteId == cotizaciones.ClienteId);
                 this.clienteComboBox.IsEnabled = false;
 
             } else
@@ -77,9 +77,8 @@ namespace Sistema.UI.Registro
 
         private void Limpiar()
         {
-            facturaIdTextBox.Text = "0";
+            cotizacionIdTextBox.Text = "0";
             fechaDataPicker.SelectedDate = DateTime.Now;
-            fechaVencimientoDatePicker.SelectedDate = DateTime.Now.AddDays(30);
             clienteComboBox.Text = string.Empty;
             articuloComboBox.Text = string.Empty;
             CantidadTextBox.Text = string.Empty;
@@ -87,8 +86,8 @@ namespace Sistema.UI.Registro
             impuestoLabel.Content = 0;
             subTotalLabel.Content = 0;
             this.clienteComboBox.IsEnabled = true;
-            this.facturasDetalles = new List<FacturasDetalle>();
-            this.facturas = new Facturas();
+            this.cotizacionesDetalles = new List<CotizacionesDetalle>();
+            this.cotizaciones = new Cotizaciones();
             this.Actualizar();
 
         }
@@ -96,8 +95,8 @@ namespace Sistema.UI.Registro
         private void Actualizar()
         {
             this.articuloDataGrid.ItemsSource = null;
-            articuloDataGrid.ItemsSource = this.facturasDetalles;
-            this.DataContext = facturas;
+            articuloDataGrid.ItemsSource = this.cotizacionesDetalles;
+            this.DataContext = cotizaciones;
         }
 
 
@@ -105,26 +104,21 @@ namespace Sistema.UI.Registro
        {
             bool paso = true;
 
-            if (string.IsNullOrEmpty(facturaIdTextBox.Text))
+            if (string.IsNullOrEmpty(cotizacionIdTextBox.Text))
              {
                 paso = false;
                 MessageBox.Show("El campo ID no puede estar vacio Favor colocar 0", "Informacion", MessageBoxButton.OK, MessageBoxImage.Information);
-                facturaIdTextBox.Focus();
+                cotizacionIdTextBox.Focus();
 
              }
             if (fechaDataPicker.SelectedDate == null)
             {
                 paso = false;
                 MessageBox.Show("El campo Fecha no puede estar vacio", "Informacion", MessageBoxButton.OK, MessageBoxImage.Information);
-                fechaDataPicker.Focus();
-                
+                cotizacionIdTextBox.Focus();
+                cotizacionIdTextBox.Focus();
             }
-            if (fechaVencimientoDatePicker.SelectedDate == null)
-            {
-                paso = false;
-                MessageBox.Show("El campo Fecha Vencimiento no puede estar vacio", "Informacion", MessageBoxButton.OK, MessageBoxImage.Information);
-                fechaVencimientoDatePicker.Focus();
-            }
+           
 
             if (clienteComboBox.SelectedItem == null)
                     {
@@ -138,8 +132,8 @@ namespace Sistema.UI.Registro
 
         private bool Existe()
         {
-            Facturas facturas = FacturasBLL.Buscar(Convert.ToInt32(facturaIdTextBox.Text));
-            return (facturas != null);
+            Cotizaciones cotizaciones = CotizacionesBLL.Buscar(Convert.ToInt32(cotizacionIdTextBox.Text));
+            return (cotizaciones != null);
         }
 
         private void GuardarBtn(object sender, RoutedEventArgs e)
@@ -147,18 +141,18 @@ namespace Sistema.UI.Registro
             bool paso = false;
             Clientes cliente = (Clientes)clienteComboBox.SelectedValue;
             
-            facturas.ClienteId = cliente.ClienteId;
+            cotizaciones.ClienteId = cliente.ClienteId;
 
             if (!Validar())
                 return;
 
-            this.facturas.FacturasDetalles = this.facturasDetalles;
+            this.cotizaciones.CotizacionesDetalles = this.cotizacionesDetalles;
 
 
-            foreach(var detalle in this.facturas.FacturasDetalles)
+            foreach(var detalle in this.cotizaciones.CotizacionesDetalles)
             {
                 Articulos articulo = ArticuloBLL.Buscar(detalle.ArticuloId);
-                articulo.UsuarioId = facturas.UsuarioId;
+                articulo.UsuarioId = cotizaciones.UsuarioId;
                 if (articulo.Cantidad > 0)
                 {
                     articulo.Cantidad -= detalle.Cantidad;
@@ -167,8 +161,8 @@ namespace Sistema.UI.Registro
                 
             }
 
-            if (String.IsNullOrEmpty(facturaIdTextBox.Text) || facturaIdTextBox.Text == "0")
-                paso = FacturasBLL.Guardar(facturas);
+            if (String.IsNullOrEmpty(cotizacionIdTextBox.Text) || cotizacionIdTextBox.Text == "0")
+                paso = CotizacionesBLL.Guardar(cotizaciones);
             else
             {
                 if (!Existe())
@@ -176,7 +170,7 @@ namespace Sistema.UI.Registro
                     MessageBox.Show("No existe el en la Base de datos", "Informacion", MessageBoxButton.OK, MessageBoxImage.Information);
                     return;
                 }
-                paso = FacturasBLL.Modificar(facturas);
+                paso = CotizacionesBLL.Modificar(cotizaciones);
             }
 
             if (paso)
@@ -197,12 +191,12 @@ namespace Sistema.UI.Registro
 
 
 
-            Facturas anterior = FacturasBLL.Buscar(int.Parse(facturaIdTextBox.Text));
+            Cotizaciones anterior = CotizacionesBLL.Buscar(int.Parse(cotizacionIdTextBox.Text));
 
             if (anterior != null)
             {               
-                facturas = anterior;
-                this.facturasDetalles = anterior.FacturasDetalles;                
+                cotizaciones = anterior;
+                this.cotizacionesDetalles = anterior.CotizacionesDetalles;                
                 Actualizar();
                 Lista();
                 Calcular();
@@ -223,7 +217,7 @@ namespace Sistema.UI.Registro
         private void EliminarBtn(object sender, RoutedEventArgs e)
         {
             int id;
-            int.TryParse(facturaIdTextBox.Text, out id);
+            int.TryParse(cotizacionIdTextBox.Text, out id);
 
             if (FacturasBLL.Eliminar(id))
             {
@@ -251,12 +245,12 @@ namespace Sistema.UI.Registro
 
             if (articuloDataGrid.ItemsSource != null)
             {
-                this.facturasDetalles = (List<FacturasDetalle>)articuloDataGrid.ItemsSource;
+                this.cotizacionesDetalles = (List<CotizacionesDetalle>)articuloDataGrid.ItemsSource;
             }
 
-            this.facturasDetalles.Add(new FacturasDetalle
+            this.cotizacionesDetalles.Add(new CotizacionesDetalle
             {
-                FacturaId = Convert.ToInt32(facturaIdTextBox.Text),
+                CotizacionId = Convert.ToInt32(cotizacionIdTextBox.Text),
                 ArticuloId  = articulo.ArticuloId,
                 Precio = articulo.Precio,
                 Cantidad = Convert.ToInt32(CantidadTextBox.Text)
@@ -268,8 +262,8 @@ namespace Sistema.UI.Registro
 
         private void Calcular()
         {
-            decimal subTotal = this.facturasDetalles.Select(x => x.Cantidad * x.Precio).Sum();
-            decimal impuestoTotal = (Decimal)this.facturasDetalles.Sum(x => x.Impuesto);
+            decimal subTotal = this.cotizacionesDetalles.Select(x => x.Cantidad * x.Precio).Sum();
+            decimal impuestoTotal = (Decimal)this.cotizacionesDetalles.Sum(x => x.Impuesto);
             decimal total = subTotal + impuestoTotal;
 
             subTotalLabel.Content = subTotal.ToString();
