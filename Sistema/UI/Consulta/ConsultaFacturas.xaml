@@ -30,7 +30,7 @@
             </StackPanel>
         </materialDesign:ColorZone>
 
-        <TextBlock Grid.Row="1" Text="Consula de Facturas" HorizontalAlignment="Left" FontSize="35" VerticalAlignment="Center" Width="516" Margin="218,0,0,0" Height="42"/>
+        <TextBlock Grid.Row="1" Text="Consulta de Facturas" HorizontalAlignment="Left" FontSize="35" VerticalAlignment="Center" Width="516" Margin="218,0,0,0" Height="42"/>
         <ComboBox HorizontalAlignment="Left" Margin="124,17,0,0" Grid.Row="2" Width="120" VerticalAlignment="Top"/>
         <DatePicker HorizontalAlignment="Left" Margin="363,0,0,0" Grid.Row="2" Width="113"/>
     </Grid>
