@@ -21,6 +21,7 @@ namespace Sistema.UI.Registro
     {
         Articulos articulos = new Articulos();
 
+
         public RegistroArticulos()
         {
             InitializeComponent();
