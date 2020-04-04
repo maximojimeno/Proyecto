@@ -15,46 +15,41 @@ using System.Windows.Shapes;
 namespace Sistema.UI.Consulta
 {
     /// <summary>
-    /// Interaction logic for ConsultaFacturas.xaml
+    /// Interaction logic for ConsultaArticulos.xaml
     /// </summary>
-    public partial class ConsultaFacturas : Window
+    public partial class ConsultaArticulos : Window
     {
-        public ConsultaFacturas()
+        public ConsultaArticulos()
         {
             InitializeComponent();
         }
 
         private void ConsultarButton_Click(object sender, RoutedEventArgs e)
         {
-            var lista = new List<Facturas>();
-            if (CriterioTextBox.Text.Trim().Length > 0)
+            var lista = new List<Articulos>();
+            if(CriterioTextBox.Text.Trim().Length>0)
             {
                 switch (FiltroComboBox.SelectedIndex)
                 {
                     case 0: //TODO
-                        lista = FacturasBLL.GetList(x => true);
+                        lista = ArticuloBLL.GetList(x => true);
                         break;
 
                     case 1: //ID
                         int id = int.Parse(CriterioTextBox.Text);
-                        lista = FacturasBLL.GetList(x => x.FacturaId == id);
+                        lista = ArticuloBLL.GetList(x => x.ArticuloId == id);
                         break;
 
-                    case 2: //Fecha
-                        DateTime fecha = Convert.ToDateTime(CriterioTextBox.Text);
-                        lista = FacturasBLL.GetList(x => x.Fecha == fecha);
-                        break;
-
-                    case 3: //FECHAVENCIMIENTO
-                        DateTime fechav = Convert.ToDateTime(CriterioTextBox.Text);
-                        lista = FacturasBLL.GetList(x => x.FechaVencimiento == fechav);
+                    case 2: //DESCRIPCION
+                        string descripcion = Convert.ToString(CriterioTextBox.Text);
+                        lista = ArticuloBLL.GetList(x => x.Descripcion == descripcion);
                         break;
                 }
 
             }
             else
             {
-                lista = FacturasBLL.GetList(x => true);
+                lista = ArticuloBLL.GetList(x => true);
             }
             ConsultarDataGrid.ItemsSource = null;
             ConsultarDataGrid.ItemsSource = lista;

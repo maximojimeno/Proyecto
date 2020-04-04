@@ -15,47 +15,47 @@ using System.Windows.Shapes;
 namespace Sistema.UI.Consulta
 {
     /// <summary>
-    /// Interaction logic for ConsultaFacturas.xaml
+    /// Interaction logic for ConsultaUsuarios.xaml
     /// </summary>
-    public partial class ConsultaFacturas : Window
+    public partial class ConsultaUsuarios : Window
     {
-        public ConsultaFacturas()
+        public ConsultaUsuarios()
         {
             InitializeComponent();
         }
 
         private void ConsultarButton_Click(object sender, RoutedEventArgs e)
         {
-            var lista = new List<Facturas>();
-            if (CriterioTextBox.Text.Trim().Length > 0)
+            var lista = new List<Usuarios>();
+
+            if(CriterioTextBox.Text.Trim().Length>0)
             {
                 switch (FiltroComboBox.SelectedIndex)
                 {
-                    case 0: //TODO
-                        lista = FacturasBLL.GetList(x => true);
+                    case 0://TODO
+                        lista = UsuariosBLL.GetList(x => true);
                         break;
 
                     case 1: //ID
                         int id = int.Parse(CriterioTextBox.Text);
-                        lista = FacturasBLL.GetList(x => x.FacturaId == id);
+                        lista = UsuariosBLL.GetList(x => x.UsuarioId == id);
                         break;
 
-                    case 2: //Fecha
-                        DateTime fecha = Convert.ToDateTime(CriterioTextBox.Text);
-                        lista = FacturasBLL.GetList(x => x.Fecha == fecha);
+                    case 2: //NOMBRES
+                        lista = UsuariosBLL.GetList(x => x.Nombres.Contains(CriterioTextBox.Text));
                         break;
 
-                    case 3: //FECHAVENCIMIENTO
-                        DateTime fechav = Convert.ToDateTime(CriterioTextBox.Text);
-                        lista = FacturasBLL.GetList(x => x.FechaVencimiento == fechav);
+                    case 3: //NOMBREUSUARIO
+                        lista = UsuariosBLL.GetList(x => x.UserName.Contains(CriterioTextBox.Text));
                         break;
                 }
 
             }
             else
             {
-                lista = FacturasBLL.GetList(x => true);
+                lista = UsuariosBLL.GetList(x => true);
             }
+
             ConsultarDataGrid.ItemsSource = null;
             ConsultarDataGrid.ItemsSource = lista;
         }
