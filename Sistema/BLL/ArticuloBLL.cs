@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Sistema.Data;
 using Sistema.Entidades;
+using Sistema.UI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +19,7 @@ namespace Sistema.BLL
 
             try
             {
+                articulos.UsuarioId = Sesion.usuarioActual.UsuarioId;
                 if (db.Articulos.Add(articulos) != null)
                     paso = db.SaveChanges() > 0;
             }catch(Exception)
@@ -37,6 +39,7 @@ namespace Sistema.BLL
 
             try
             {
+                articulos.UsuarioId = Sesion.usuarioActual.UsuarioId;
                 db.Entry(articulos).State = EntityState.Modified;
                 paso = (db.SaveChanges() > 0);
             }catch(Exception)

@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Sistema.Data;
 using Sistema.Entidades;
+using Sistema.UI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +19,7 @@ namespace Sistema.BLL
 
             try
             {
+                pagos.UsuarioId = Sesion.usuarioActual.UsuarioId;
                 if (db.Pagos.Add(pagos) != null)
                     paso = db.SaveChanges() > 0;
             }
@@ -39,6 +41,7 @@ namespace Sistema.BLL
 
             try
             {
+                pagos.UsuarioId = Sesion.usuarioActual.UsuarioId;
                 db.Database.ExecuteSqlRaw($"DELETE FROM PagosDetalle Where PagoId = {pagos.PagoId}");
                 foreach (var item in pagos.PagosDetalles)
                 {

@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Sistema.Data;
 using Sistema.Entidades;
+using Sistema.UI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +19,7 @@ namespace Sistema.BLL
 
             try
             {
+                cotizaciones.UsuarioId = Sesion.usuarioActual.UsuarioId;
                 if (db.Cotizaciones.Add(cotizaciones) != null)
                     paso = db.SaveChanges() > 0;
             }catch(Exception)
@@ -37,6 +39,7 @@ namespace Sistema.BLL
 
             try
             {
+                cotizaciones.UsuarioId = Sesion.usuarioActual.UsuarioId;
                 db.Database.ExecuteSqlRaw($"DELETE FROM CotizacionesDetalle Where CotizacionId = {cotizaciones.CotizacionId}");
                 foreach(var item in cotizaciones.CotizacionesDetalles)
                 {

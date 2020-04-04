@@ -35,8 +35,13 @@ namespace Sistema.UI
             bool paso = Auth.Validar(usuarios.UserName, usuarios.Password);
             if (paso)
             {
+                Usuarios usuario = BLL.UsuariosBLL.GetList(x => x.UserName == usuarios.UserName)[0];
+                Sesion.usuarioActual = usuario;
+
                 Close();
                 Principal.Show();
+                
+
             }
             else
             {
