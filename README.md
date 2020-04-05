@@ -35,8 +35,13 @@ En el registro de clientes se registraran los clientes, aqui en estos campos pod
 
 # **Articulos**
 ________________________________________________________________________________________________________________________________________
+![Articulos](https://user-images.githubusercontent.com/60042990/78505675-00e8ea80-7743-11ea-8382-9e6ecd815343.png)
 
 En el registro de articulos se podran agregar articulos, llenando los campos con sus atributos correspondientes
+________________________________________________________________________________________________________________________________________
+# **Factura**
+En el registro de Facturas se registran las facturas con detalle de los articulos y clientes.
+
 
 # **Consultas**
 ________________________________________________________________________________________________________________________________________
