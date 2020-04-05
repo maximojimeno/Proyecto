@@ -24,13 +24,13 @@ ________________________________________________________________________________
 Este es el menu principal del programa el cual tendra disponible la utilizacion de todos los registros o las consultas que necesite
 _______________________________________________________________________________________________________________________________________
 # **Clientes**
-_________________________________________________________________________________________________________________________________________
+
 ![clientes](https://user-images.githubusercontent.com/60042990/78505506-e06c6080-7741-11ea-80f6-9fdd089f87fb.png)
 
 En el registro de clientes se registraran los clientes, aqui en estos campos podran llenar los atributos fundamentales de un cliente
 
 # **Articulos**
-________________________________________________________________________________________________________________________________________
+
 ![Articulos](https://user-images.githubusercontent.com/60042990/78505675-00e8ea80-7743-11ea-8382-9e6ecd815343.png)
 
 En el registro de articulos se podran agregar articulos, llenando los campos con sus atributos correspondientes
@@ -47,7 +47,8 @@ En el registro de Usuarios se van a registrar los usuarios que no esten registra
 ![cotizaciones](https://user-images.githubusercontent.com/60042990/78505685-0e9e7000-7743-11ea-9fb5-34671cfca7ee.png)
 En el registro Cotizaciones vera de forma detallada cada cotizacion relacionada con el cliente
 # **Consultas**
-________________________________________________________________________________________________________________________________________
+
+![consulta](https://user-images.githubusercontent.com/60042990/78506010-16f7aa80-7745-11ea-8268-a13c0121385e.png)
 Cada registro tendra su correspondiente consulta para visualizar los elementos que estan registrados en la base de datos, 
 especificando..falta
 
