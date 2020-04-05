@@ -22,11 +22,7 @@ ________________________________________________________________________________
 ![menu](https://user-images.githubusercontent.com/60042990/78505447-8e2b3f80-7741-11ea-9816-854b7ba8e002.png)
 
 Este es el menu principal del programa el cual tendra disponible la utilizacion de todos los registros o las consultas que necesite
-
-
-
-
-
+_______________________________________________________________________________________________________________________________________
 # **Clientes**
 _________________________________________________________________________________________________________________________________________
 ![clientes](https://user-images.githubusercontent.com/60042990/78505506-e06c6080-7741-11ea-80f6-9fdd089f87fb.png)
@@ -41,7 +37,11 @@ En el registro de articulos se podran agregar articulos, llenando los campos con
 ________________________________________________________________________________________________________________________________________
 # **Factura**
 ![factura](https://user-images.githubusercontent.com/60042990/78505666-f9c1dc80-7742-11ea-8e6b-d05496ce71fd.png)
-En el registro de Facturas se registran las facturas con detalle de los articulos y clientes.
+En el registro de Facturas se registran las facturas con detalle de los articulos y clientes
+
+# **Usuarios**
+En el registro de Usuarios se van a registrar los usuarios que no esten registrados
+
 
 
 # **Consultas**
