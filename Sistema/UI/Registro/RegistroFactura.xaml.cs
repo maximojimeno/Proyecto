@@ -282,6 +282,11 @@ namespace Sistema.UI.Registro
         private void RemoverBtn(object sender, RoutedEventArgs e)
         {
 
+            if (articuloDataGrid.Items.Count > 1 && articuloDataGrid.SelectedIndex < articuloDataGrid.Items.Count - 1)
+            {
+                facturas.FacturasDetalles.RemoveAt(articuloDataGrid.SelectedIndex);
+                Actualizar();
+            }
         }
     }
 }

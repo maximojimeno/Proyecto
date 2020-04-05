@@ -18,7 +18,7 @@
             <materialDesign:PackIcon Kind="IdentificationCard" Margin="10,32,0,0"/>
             <TextBox x:Name="cotizacionIdTextBox" HorizontalAlignment="Left" Margin="36,9,0,0" materialDesign:HintAssist.IsFloating="True" materialDesign:HintAssist.Hint="Numero de Factura" TextWrapping="Wrap" VerticalAlignment="Top" Width="118" Height="45">
                 <TextBox.Text>
-                    <Binding Path="FacturaId" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged"></Binding>
+                    <Binding Path="CotizacionId" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged"></Binding>
                 </TextBox.Text>
             </TextBox>
 
@@ -43,7 +43,10 @@
                       Name="articuloDataGrid"                       
                       materialDesign:DataGridAssist.CellPadding="4 2 2 2"
                       materialDesign:DataGridAssist.ColumnHeaderPadding="4 2 2 2">
+                <DataGrid.ItemsSource>
+                    <Binding Path="CotizacionesDetalles" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay"/>
 
+                </DataGrid.ItemsSource>
             </DataGrid>
 
 

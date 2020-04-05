@@ -14,7 +14,6 @@ namespace Sistema.Entidades
             ClienteId = 0;
             Fecha = DateTime.Now;
             FechaVencimiento = Fecha.AddDays(30);
-            Descuento = 0;
             Impuesto = 0;
             Total = 0;
             Balance = 0;
@@ -28,7 +27,6 @@ namespace Sistema.Entidades
         public int ClienteId { get; set; }
         public DateTime Fecha { get; set; }
         public DateTime FechaVencimiento { get; set; }
-        public decimal? Descuento { get; set; }
         public double? Impuesto { get; set; }
         public decimal Total { get; set; }
         public decimal Balance {get;set;}

@@ -37,9 +37,25 @@
             <Menu Height="34" Width="152">
 
                 <MenuItem Header="Registros" Width="194" Height="28" VerticalAlignment="Center">
+                    <MenuItem x:Name="RegistroFacturas" Header="Facturas" Click="RegistroFacturas_Click"/>
+                    <MenuItem x:Name="RegistroCotizaciones" Header="Cotizaciones" Click="RegistroCotizaciones_Click"/>
                     <MenuItem x:Name="RegistroUsuarios" Header="Registro Usarios" Click="RegistroUsuarios_Click"/>
                     <MenuItem x:Name="RegistroClientes" Header="Registro Clientes" Click="RegistroClientes_Click"/>
                     <MenuItem x:Name="RegistroArticulos" Header="Registro Articulos" Click="RegistroArticulos_Click"/>
+                    
+                </MenuItem>
+
+
+
+            </Menu>
+            <Menu Height="34" Width="152">
+
+                <MenuItem Header="Consultas" Width="194" Height="28" VerticalAlignment="Center">
+                    <MenuItem x:Name="ConsultaUsuarios" Header="Consultas Usarios" Click="ConsultaUsuarios_Click"/>
+                    <MenuItem x:Name="ConsultasClientes" Header="Consultas Clientes" Click="ConsultasClientes_Click"/>
+                    <MenuItem x:Name="ConsultasArticulos" Header="Consultas Articulos" Click="ConsultasArticulos_Click"/>
+                    <MenuItem x:Name="ConsultasFacturas" Header="Consultas Facturas" Click="ConsultasFacturas_Click"/>
+                    <MenuItem x:Name="ConsultasCotizaciones" Header="Consultas Cotizaciones" Click="ConsultasCotizaciones_Click"/>
                     
                 </MenuItem>
 

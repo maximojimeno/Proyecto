@@ -44,11 +44,15 @@
                     <Binding Path="FechaVencimiento" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged"></Binding>
                 </DatePicker.SelectedDate>
             </DatePicker>
+            
             <DataGrid Margin="10,257,335,74"
                       Name="articuloDataGrid"                       
                       materialDesign:DataGridAssist.CellPadding="4 2 2 2"
                       materialDesign:DataGridAssist.ColumnHeaderPadding="4 2 2 2">
+                <DataGrid.ItemsSource>
+                    <Binding Path="FacturasDetalles" UpdateSourceTrigger="PropertyChanged" Mode="TwoWay"/>
 
+                </DataGrid.ItemsSource>
             </DataGrid>
 
 

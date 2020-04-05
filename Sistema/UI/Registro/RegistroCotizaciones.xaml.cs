@@ -146,21 +146,6 @@ namespace Sistema.UI.Registro
             if (!Validar())
                 return;
 
-            this.cotizaciones.CotizacionesDetalles = this.cotizacionesDetalles;
-
-
-            foreach(var detalle in this.cotizaciones.CotizacionesDetalles)
-            {
-                Articulos articulo = ArticuloBLL.Buscar(detalle.ArticuloId);
-                articulo.UsuarioId = cotizaciones.UsuarioId;
-                if (articulo.Cantidad > 0)
-                {
-                    articulo.Cantidad -= detalle.Cantidad;
-                }
-                ArticuloBLL.Modificar(articulo);
-                
-            }
-
             if (String.IsNullOrEmpty(cotizacionIdTextBox.Text) || cotizacionIdTextBox.Text == "0")
                 paso = CotizacionesBLL.Guardar(cotizaciones);
             else
@@ -219,7 +204,7 @@ namespace Sistema.UI.Registro
             int id;
             int.TryParse(cotizacionIdTextBox.Text, out id);
 
-            if (FacturasBLL.Eliminar(id))
+            if (CotizacionesBLL.Eliminar(id))
             {
                 MessageBox.Show("Eliminado con exito!!!", "ELiminado", MessageBoxButton.OK, MessageBoxImage.Information);
                 Limpiar();
@@ -275,7 +260,11 @@ namespace Sistema.UI.Registro
 
         private void RemoverBtn(object sender, RoutedEventArgs e)
         {
-
+            if (articuloDataGrid.Items.Count > 1 && articuloDataGrid.SelectedIndex < articuloDataGrid.Items.Count - 1)
+            {
+                cotizaciones.CotizacionesDetalles.RemoveAt(articuloDataGrid.SelectedIndex);
+                Actualizar();
+            }
         }
     }
 }

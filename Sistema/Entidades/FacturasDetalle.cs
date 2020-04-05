@@ -15,7 +15,6 @@ namespace Sistema.Entidades
             Precio = 0;
             Cantidad = 0;
         }
-
         [Key]
         public int FacturasDetalleId { get; set; }
         public int FacturaId { get; set; }

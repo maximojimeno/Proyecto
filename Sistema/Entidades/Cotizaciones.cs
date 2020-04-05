@@ -13,7 +13,6 @@ namespace Sistema.Entidades
             UsuarioId = 0;
             ClienteId = 0;
             Fecha = DateTime.Now;
-            Descuento = 0;
             Impuesto = 0;
             Total = 0;
             CotizacionesDetalles = new List<CotizacionesDetalle>();
@@ -23,7 +22,6 @@ namespace Sistema.Entidades
         public int UsuarioId { get; set; }
         public int ClienteId { get; set; }
         public DateTime Fecha { get; set; }
-        public decimal? Descuento { get; set; }
         public double? Impuesto { get; set; }
         public int Total { get; set; }
 

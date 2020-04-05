@@ -22,6 +22,7 @@ namespace Sistema.Entidades
         public double? Impuesto { get; set; }
         public decimal Precio { get; set; }
         public int Cantidad { get; set; }
+
         public virtual Articulos Articulo { get; set; }
         public virtual Cotizaciones Cotizacion { get; set; }
     }
