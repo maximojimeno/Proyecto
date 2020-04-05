@@ -34,7 +34,7 @@ ________________________________________________________________________________
 ![Articulos](https://user-images.githubusercontent.com/60042990/78505675-00e8ea80-7743-11ea-8382-9e6ecd815343.png)
 
 En el registro de articulos se podran agregar articulos, llenando los campos con sus atributos correspondientes
-________________________________________________________________________________________________________________________________________
+
 # **Factura**
 ![factura](https://user-images.githubusercontent.com/60042990/78505666-f9c1dc80-7742-11ea-8e6b-d05496ce71fd.png)
 En el registro de Facturas se registran las facturas con detalle de los articulos y clientes
@@ -44,6 +44,7 @@ En el registro de Facturas se registran las facturas con detalle de los articulo
 En el registro de Usuarios se van a registrar los usuarios que no esten registrados
 
 # **Cotizaciones**
+![cotizaciones](https://user-images.githubusercontent.com/60042990/78505685-0e9e7000-7743-11ea-9fb5-34671cfca7ee.png)
 En el registro Cotizaciones vera de forma detallada cada cotizacion relacionada con el cliente
 # **Consultas**
 ________________________________________________________________________________________________________________________________________
