@@ -40,6 +40,7 @@ ________________________________________________________________________________
 En el registro de articulos se podran agregar articulos, llenando los campos con sus atributos correspondientes
 ________________________________________________________________________________________________________________________________________
 # **Factura**
+![factura](https://user-images.githubusercontent.com/60042990/78505666-f9c1dc80-7742-11ea-8e6b-d05496ce71fd.png)
 En el registro de Facturas se registran las facturas con detalle de los articulos y clientes.
 
 
