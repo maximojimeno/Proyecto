@@ -10,12 +10,12 @@ Edward Computadoras, la cual servira para utilizar dicho sistema sin ningun inco
 # **Login**
 ___________________________________________________________________________________________________________________________________________
 
-
+![login](https://user-images.githubusercontent.com/60042990/78505293-98007300-7740-11ea-9246-cc14c12f1801.png)
 
 
 Este es el formulario principal, cuya funcion es iniciar la seccion del usuario que entrara al programa para utilizarlo, el usuario 
 debe completar los datos y seleccionar el boton iniciar para poder seguir al menu del programa
-si no hay usuarios registrado siempre habra un usuario por defecto cuyo nombre sera Admin y la contraseña sera 1234
+si no hay usuarios registrado siempre habra un usuario por defecto cuyo nombre sera admin y la contraseña sera 1234
 
 # **Menu-Principal**
 ___________________________________________________________________________________________________________________________________________
