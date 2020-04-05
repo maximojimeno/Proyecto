@@ -19,7 +19,7 @@ si no hay usuarios registrado siempre habra un usuario por defecto cuyo nombre s
 
 # **Menu-Principal**
 ___________________________________________________________________________________________________________________________________________
-
+![menu](https://user-images.githubusercontent.com/60042990/78505447-8e2b3f80-7741-11ea-9816-854b7ba8e002.png)
 
 Este es el menu principal del programa el cual tendra disponible la utilizacion de todos los registros o las consultas que necesite
 
