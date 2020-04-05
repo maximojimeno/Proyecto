@@ -29,7 +29,7 @@ Este es el menu principal del programa el cual tendra disponible la utilizacion 
 
 # **Clientes**
 _________________________________________________________________________________________________________________________________________
-
+![clientes](https://user-images.githubusercontent.com/60042990/78505506-e06c6080-7741-11ea-80f6-9fdd089f87fb.png)
 
 En el registro de clientes se registraran los clientes, aqui en estos campos podran llenar los atributos fundamentales de un cliente
 
