@@ -40,10 +40,11 @@ ________________________________________________________________________________
 En el registro de Facturas se registran las facturas con detalle de los articulos y clientes
 
 # **Usuarios**
+![usuario](https://user-images.githubusercontent.com/60042990/78505679-08a88f00-7743-11ea-9841-b92dab1425bd.png)
 En el registro de Usuarios se van a registrar los usuarios que no esten registrados
 
-
-
+# **Cotizaciones**
+En el registro Cotizaciones vera de forma detallada cada cotizacion relacionada con el cliente
 # **Consultas**
 ________________________________________________________________________________________________________________________________________
 Cada registro tendra su correspondiente consulta para visualizar los elementos que estan registrados en la base de datos, 
