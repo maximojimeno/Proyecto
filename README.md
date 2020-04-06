@@ -49,8 +49,12 @@ En el registro Cotizaciones vera de forma detallada cada cotizacion relacionada 
 # **Consultas**
 
 ![consulta](https://user-images.githubusercontent.com/60042990/78506010-16f7aa80-7745-11ea-8268-a13c0121385e.png)
+
 Cada registro tendra su correspondiente consulta para visualizar los elementos que estan registrados en la base de datos, 
 especificando..falta
+
+# **Cronograma de Actividades**
+
 
 # **Construido con**
 _________________________________________________________________________________________________________________________________________
