@@ -55,6 +55,8 @@ especificando..falta
 
 # **Cronograma de Actividades**
 
+![crono1](https://user-images.githubusercontent.com/60042990/78568136-a9548880-77ef-11ea-96fb-c2ef745717d5.png)
+
 
 # **Construido con**
 _________________________________________________________________________________________________________________________________________
