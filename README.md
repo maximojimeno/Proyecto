@@ -58,6 +58,11 @@ especificando..falta
 ![crono1](https://user-images.githubusercontent.com/60042990/78568136-a9548880-77ef-11ea-96fb-c2ef745717d5.png)
 
 
+# **Diagrama de Base de Datos**
+
+![diagrama](https://user-images.githubusercontent.com/60042990/78580242-1ff98200-7800-11ea-938d-6ca88f05d275.png)
+
+
 # **Construido con**
 _________________________________________________________________________________________________________________________________________
 Visual Studio C# 2019
